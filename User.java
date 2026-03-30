@@ -33,7 +33,7 @@ public class User {
         if (movingLeft) {
             x -= speed;
         }
-        //if moving left, add to speed
+        //if moving right, add to speed
         if (movingRight) {
             x += speed;
         }

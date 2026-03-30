@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
  * @version Spring, 2026
  */
 
-public class PawfficeMain implements Runnable{
+public class PawfficeMain implements Runnable {
 
     //user
     private User user;
@@ -35,25 +35,26 @@ public class PawfficeMain implements Runnable{
         frame.setPreferredSize(new Dimension(500, 500));
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        user = new User(250, 250);
-
+        
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
+                
                 g.setColor(BACKGROUND);
                 g.fillRect(0, 0, getWidth(), getHeight());
-
+                
                 user.draw(g);
             }
         };
 
-        panel.setPreferredSize(new Dimension(500, 500));
         frame.add(panel);
+        
         frame.pack();
         frame.setVisible(true);
+        user = new User(panel.getWidth()/2, panel.getHeight()/2);
+        System.out.println(frame.getHeight()/2);
+        System.out.println(panel.getHeight()/2);
 
         frame.addKeyListener(new KeyAdapter() {
 
@@ -100,6 +101,8 @@ public class PawfficeMain implements Runnable{
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new PawfficeMain());
+        PawfficeMain pm = new PawfficeMain();
+        Thread pawffice = new Thread(pm);
+        pawffice.start();
     }
 }
