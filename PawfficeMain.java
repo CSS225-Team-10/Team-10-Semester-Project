@@ -3,6 +3,8 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * Creates the actual panel for the user to interact with, still needs all the
@@ -16,10 +18,6 @@ public class PawfficeMain implements Runnable{
 
     //user
     private User user;
-
-    //testing stuff
-    private int x = 250;
-    private int y = 250;
 
     //background color
     private final Color BACKGROUND = new Color(0, 0, 0);
@@ -39,7 +37,7 @@ public class PawfficeMain implements Runnable{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         user = new User(250, 250);
-        
+
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -54,6 +52,35 @@ public class PawfficeMain implements Runnable{
 
         panel.setPreferredSize(new Dimension(500, 500));
         frame.add(panel);
+        frame.addKeyListener(new KeyAdapter() {
+
+            //THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
+            //WHEN I CREATED A MINI GAME FOR MYSELF SO I RESEARCHED ON MY OWN TIME :)
+
+            //checks which key is pressed
+            public void keyPressed(KeyEvent e) {
+                //if key is left arrow, movingLeft boolean is set true
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    user.setMovingLeft(true);
+                }
+                //if key is right arrow, movingRight boolean is set true
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    user.setMovingRight(true);
+                }
+            }
+
+            //checks which key is released
+            public void keyReleased(KeyEvent e) {
+                //if key is left arrow, movingLeft boolean is set false
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    user.setMovingLeft(false);
+                }
+                //if key is right arrow, movingRight boolean is set false
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    user.setMovingRight(false);
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
