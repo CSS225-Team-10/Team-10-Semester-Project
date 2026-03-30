@@ -29,7 +29,9 @@ public class PawfficeMain implements Runnable{
         frame.setPreferredSize(new Dimension(500, 500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
+        panel = new JPanel();
+        panel.setBackground(BACKGROUND);
+        frame.add(panel);
     }
 
     public static void main(String[] args) {
