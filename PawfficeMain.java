@@ -53,8 +53,6 @@ public class PawfficeMain implements Runnable {
         frame.pack();
         frame.setVisible(true);
         user = new User(panel.getWidth()/2, panel.getHeight()/2);
-        System.out.println(frame.getHeight()/2);
-        System.out.println(panel.getHeight()/2);
 
         frame.addKeyListener(new KeyAdapter() {
 
