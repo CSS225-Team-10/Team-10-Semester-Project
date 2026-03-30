@@ -52,6 +52,8 @@ public class PawfficeMain implements Runnable{
 
         panel.setPreferredSize(new Dimension(500, 500));
         frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
         frame.addKeyListener(new KeyAdapter() {
 
             //THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
