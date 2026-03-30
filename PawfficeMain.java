@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 /**
  * Creates the actual panel for the user to interact with, still needs all the
@@ -9,13 +10,19 @@ import javax.swing.JPanel;
  * @version Spring, 2026
  */
 
-public class GamePanel implements Runnable{
+public class PawfficeMain implements Runnable{
+
+    //background color
+    private final Color BACKGROUND = new Color(0, 0, 0);
+
+    //Panel for our GUI.
+    private JPanel panel;
 
     /**
      * The run method to set up the graphical user interface
      */
     @Override
-    public Run() {
+    public void run() {
 
     }
 
