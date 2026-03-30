@@ -28,9 +28,11 @@ public class PawfficeMain implements Runnable{
         JFrame frame = new JFrame("Pawffice");
         frame.setPreferredSize(new Dimension(500, 500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
     }
 
     public static void main(String[] args) {
-        
+        javax.swing.SwingUtilities.invokeLater(new PawfficeMain());
     }
 }
