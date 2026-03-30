@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Dimension;
 
 /**
  * Creates the actual panel for the user to interact with, still needs all the
@@ -23,7 +24,10 @@ public class PawfficeMain implements Runnable{
      */
     @Override
     public void run() {
-
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JFrame frame = new JFrame("Pawffice");
+        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args) {
