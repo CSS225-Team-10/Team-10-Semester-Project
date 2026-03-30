@@ -54,6 +54,7 @@ public class PawfficeMain implements Runnable{
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
+
         frame.addKeyListener(new KeyAdapter() {
 
             //THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
@@ -83,6 +84,19 @@ public class PawfficeMain implements Runnable{
                 }
             }
         });
+
+        //while loop to allow for the panel to even function
+        while (true) {
+            //repaint the panel and allow the user to move :D
+            panel.repaint();
+            user.update();
+
+            try {
+                //this represents the games fps!!!
+                Thread.sleep(16);
+            } catch (InterruptedException e) {
+            }
+        }
     }
 
     public static void main(String[] args) {
