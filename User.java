@@ -40,7 +40,7 @@ public class User {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.PINK);
+        g.setColor(Color.GREEN);
         g.fillRect(x, y, width, height);
     }
 
