@@ -22,10 +22,12 @@ public class User {
     private boolean movingLeft = false; 
     private boolean movingRight = false;
 
+    private int worldWidth;
     
-    public User(int x, int y) {
+    public User(int x, int y, int worldWidth) {
         this.x = x;
         this.y = y;
+        this.worldWidth = worldWidth;
     }
 
     public void update() {
@@ -36,6 +38,14 @@ public class User {
         //if moving right, add to speed
         if (movingRight) {
             x += speed;
+        }
+
+        // Ensure the user stays within the bounds of the world
+        if (x < 0) {
+            x = 0;
+        } 
+        if (x + width > worldWidth) {
+            x = worldWidth - width;
         }
     }
 
@@ -59,4 +69,5 @@ public class User {
     public int getY() {
         return y;
     }
+
 }
