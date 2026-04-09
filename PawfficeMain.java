@@ -16,7 +16,7 @@ import java.awt.event.KeyEvent;
 
 public class PawfficeMain implements Runnable {
     //a constant for the world width, no height needed i think
-    private final int WORLD_WIDTH = 1500;
+    private final int WORLD_WIDTH = 1000;
 
     //user
     private User user;
