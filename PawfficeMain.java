@@ -15,6 +15,8 @@ import java.awt.event.KeyEvent;
  */
 
 public class PawfficeMain implements Runnable {
+    //a constant for the world width, no height needed i think
+    private final int WORLD_WIDTH = 1500;
 
     //user
     private User user;
@@ -24,6 +26,9 @@ public class PawfficeMain implements Runnable {
 
     //Panel for our GUI.
     private JPanel panel;
+
+    //thisll be for the camera to follow the user around the world :D
+    private int cameraX = 0;
 
     /**
      * The run method to set up the graphical user interface
@@ -44,15 +49,18 @@ public class PawfficeMain implements Runnable {
                 g.setColor(BACKGROUND);
                 g.fillRect(0, 0, getWidth(), getHeight());
                 
-                user.draw(g);
+                g.setColor(Color.RED);
+                g.fillRect(0 - cameraX, 0, 8, getHeight());
+                g.fillRect(WORLD_WIDTH - cameraX - 8, 0, 8, getHeight());
+
+                user.draw(g, cameraX);
             }
         };
 
         frame.add(panel);
-        
         frame.pack();
         frame.setVisible(true);
-        user = new User(panel.getWidth()/2, panel.getHeight()/2);
+        user = new User(panel.getWidth()/2, panel.getHeight()/2, WORLD_WIDTH);
 
         frame.addKeyListener(new KeyAdapter() {
 
@@ -88,6 +96,7 @@ public class PawfficeMain implements Runnable {
         while (true) {
             //repaint the panel and allow the user to move :D
             panel.repaint();
+            updateCamera();
             user.update();
 
             try {
@@ -95,6 +104,27 @@ public class PawfficeMain implements Runnable {
                 Thread.sleep(16);
             } catch (InterruptedException e) {
             }
+        }
+    }
+
+    /**
+     * This method updates the camera to keep the 
+     * user centered on the screen, while making sure that the camera 
+     * does not go out of bounds of the pawffice :D
+     * 
+     */
+    private void updateCamera() {
+        int panelWidth = panel.getWidth();
+
+        //makes sure the camera is centered on the user!
+        cameraX = user.getX() + user.getWidth() / 2 - panelWidth / 2;
+
+        if (cameraX < 0) {
+            cameraX = 0;
+        } 
+
+        if (cameraX + panelWidth > WORLD_WIDTH) {
+            cameraX = WORLD_WIDTH - panelWidth;
         }
     }
 

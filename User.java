@@ -49,9 +49,9 @@ public class User {
         }
     }
 
-    public void draw(Graphics g) {
+    public void draw(Graphics g, int cameraX) {
         g.setColor(Color.GREEN);
-        g.fillRect(x, y, width, height);
+        g.fillRect(x - cameraX, y, width, height);
     }
 
     public void setMovingLeft(boolean movingLeft) {
@@ -70,4 +70,7 @@ public class User {
         return y;
     }
 
+    public int getWidth() {
+        return width;
+    }
 }
