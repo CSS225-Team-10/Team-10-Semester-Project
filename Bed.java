@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 /**
  * Mental health tip screen for Pawwfice
  * 
@@ -22,6 +24,8 @@ public class Bed extends RoomObject implements Runnable{
     private JLabel label;
 
     private JButton newTipButton;
+
+    private JTextArea tipArea;
 
     /**
      * 
@@ -50,8 +54,14 @@ public class Bed extends RoomObject implements Runnable{
 
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
+        tipArea = new JTextArea(getRandTip());
+        tipArea.setLineWrap(true);
+        tipArea.setWrapStyleWord(true);
+        
+        JScrollPane scrollPane = new JScrollPane(tipArea);
+        frame.add(scrollPane, BorderLayout.CENTER);
 
-
+        frame.pack();
         frame.setVisible(true);
     }
 
