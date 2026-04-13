@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
+
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -60,6 +63,11 @@ public class Bed extends RoomObject implements Runnable{
         tipArea.setEditable(false);
         
         JScrollPane scrollPane = new JScrollPane(tipArea);
+
+        Border padding = BorderFactory.createEmptyBorder(10,15,10,15);
+        scrollPane.setBorder(padding);
+
+
         frame.add(scrollPane, BorderLayout.CENTER);
 
         frame.pack();
