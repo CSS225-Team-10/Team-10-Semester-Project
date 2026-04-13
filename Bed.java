@@ -45,7 +45,7 @@ public class Bed extends RoomObject implements Runnable{
         newTipButton = new JButton("Click for a new Tip");
         newTipButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                label.setText(getRandTip());
+                tipArea.setText(getRandTip());
             }
         });
 
@@ -57,6 +57,7 @@ public class Bed extends RoomObject implements Runnable{
         tipArea = new JTextArea(getRandTip());
         tipArea.setLineWrap(true);
         tipArea.setWrapStyleWord(true);
+        tipArea.setEditable(false);
         
         JScrollPane scrollPane = new JScrollPane(tipArea);
         frame.add(scrollPane, BorderLayout.CENTER);
