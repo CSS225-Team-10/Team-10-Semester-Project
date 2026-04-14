@@ -30,6 +30,8 @@ public class PawfficeMain implements Runnable {
     // background color
     private final Color BACKGROUND = new Color(0, 0, 0);
 
+    private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.jpeg");
+
     // Panel for our GUI.
     private JPanel panel;
 
@@ -49,21 +51,12 @@ public class PawfficeMain implements Runnable {
 
         frame.setResizable(false);
 
-        BufferedImage backgroundImage = null;
-        try {
-            backgroundImage = ImageIO.read(new File("Images/background.jpeg"));
-        } catch (Exception e) {
-            System.out.println("Error loading background image: " + e.getMessage());
-        }
-
-        final BufferedImage finalBackgroundImage = backgroundImage;
-
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                g.drawImage(finalBackgroundImage, 0, 0, getWidth(), getHeight(), null);
+                g.drawImage(BACKGROUND_IMAGE.getImage(), 0, 0, getWidth(), getHeight(), null);
 
             
 
