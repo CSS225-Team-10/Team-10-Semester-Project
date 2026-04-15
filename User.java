@@ -17,8 +17,8 @@ public class User {
     /* physics */
     private int x;
     private int y;
-    private int width = 40; 
-    private int height = 40;
+    private int width = 128; 
+    private int height = 128;
     private int speed = 4;
 
     /* movement direction */
@@ -59,7 +59,7 @@ public class User {
 
     public void draw(Graphics g, int cameraX) {
         if (userImage != null) {
-            g.drawImage(userImage, x - cameraX, 225, width, height, null);
+            g.drawImage(userImage, x - cameraX, 250, width, height, null);
         } else {
             g.setColor(Color.GREEN);
             g.fillRect(x - cameraX, y, width, height);
