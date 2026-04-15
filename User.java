@@ -1,5 +1,8 @@
 import java.awt.Graphics;
-import java.awt.Color;;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Image;
+
 /**
  * Class for creating the user.
  * 
@@ -23,11 +26,16 @@ public class User {
     private boolean movingRight = false;
 
     private int worldWidth;
+
+    private Image userImage;
     
     public User(int x, int y, int worldWidth) {
         this.x = x;
         this.y = y;
         this.worldWidth = worldWidth;
+
+        ImageIcon icon = new ImageIcon("Images/Baloo-Idle.png");
+        userImage = icon.getImage();
     }
 
     public void update() {
@@ -50,8 +58,12 @@ public class User {
     }
 
     public void draw(Graphics g, int cameraX) {
-        g.setColor(Color.GREEN);
-        g.fillRect(x - cameraX, y, width, height);
+        if (userImage != null) {
+            g.drawImage(userImage, x - cameraX, y, width, height, null);
+        } else {
+            g.setColor(Color.GREEN);
+            g.fillRect(x - cameraX, y, width, height);
+        }
     }
 
     public void setMovingLeft(boolean movingLeft) {

@@ -1,16 +1,12 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.Image;
-import java.io.File;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+
 
 /**
  * Creates the actual panel for the user to interact with, still needs all the
@@ -22,13 +18,11 @@ import java.awt.image.BufferedImage;
 
 public class PawfficeMain implements Runnable {
     // a constant for the world width, no height needed i think
-    private final int WORLD_WIDTH = 750;
+    private final int WORLD_WIDTH = 600;
 
     // user
     private User user;
 
-    // background color
-    private final Color BACKGROUND = new Color(0, 0, 0);
 
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.jpeg");
 
@@ -56,7 +50,7 @@ public class PawfficeMain implements Runnable {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                g.drawImage(BACKGROUND_IMAGE.getImage(), 0, 0, getWidth(), getHeight(), null);
+                g.drawImage(BACKGROUND_IMAGE.getImage(), 0, 0, 750, getHeight(), null);
 
             
 
