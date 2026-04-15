@@ -59,7 +59,7 @@ public class User {
 
     public void draw(Graphics g, int cameraX) {
         if (userImage != null) {
-            g.drawImage(userImage, x - cameraX, 250, width, height, null);
+            g.drawImage(userImage, x - cameraX, 175, width, height, null);
         } else {
             g.setColor(Color.GREEN);
             g.fillRect(x - cameraX, y, width, height);
