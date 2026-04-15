@@ -19,7 +19,7 @@ public class User {
     private int y;
     private int width = 40; 
     private int height = 40;
-    private int speed = 10;
+    private int speed = 3;
 
     /* movement direction */
     private boolean movingLeft = false; 
