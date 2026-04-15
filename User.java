@@ -42,10 +42,37 @@ public class User {
         //if moving left, subtract from speed
         if (movingLeft) {
             x -= speed;
+            ImageIcon icon = new ImageIcon("Images/Baloo-WalkL-1.png");
+            userImage = icon.getImage();
         }
+
+        //FIX THIS.
+        /** 
+         * while (movingLeft) {
+            // repaint the panel and allow the user to move :D
+            x -= speed;
+            ImageIcon icon = new ImageIcon("Images/Baloo-WalkL-1.png");
+            userImage = icon.getImage();
+            try {
+                // this represents the games fps!!!
+                Thread.sleep(16);
+            } catch (InterruptedException e) {
+            }
+            icon = new ImageIcon("Images/Baloo-WalkL-2.png");
+            userImage = icon.getImage();
+        } **/
+
         //if moving right, add to speed
         if (movingRight) {
             x += speed;
+            ImageIcon icon = new ImageIcon("Images/Baloo-WalkR-1.png");
+            userImage = icon.getImage();
+        }
+
+        if (!movingRight && !movingLeft) {
+            
+            ImageIcon icon = new ImageIcon("Images/Baloo-Idle.png");
+            userImage = icon.getImage();
         }
 
         // Ensure the user stays within the bounds of the world
