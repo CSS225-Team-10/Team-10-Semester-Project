@@ -68,7 +68,7 @@ public class PawfficeMain implements Runnable {
         frame.pack();
         frame.setVisible(true);
         user = new User(panel.getWidth() / 2, panel.getHeight() / 2, WORLD_WIDTH);
-        clock = new Clock(30, 15);
+        clock = new Clock(20, 10);
         frame.addKeyListener(new KeyAdapter() {
 
             // THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY

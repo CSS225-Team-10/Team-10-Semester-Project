@@ -13,8 +13,8 @@ import javax.swing.ImageIcon;
 public class Clock {
     private int x;
     private int y;
-    private int width = 120;
-    private int height = 120;
+    private int width = 128;
+    private int height = 128;
 
     private Image clockImage;
 
