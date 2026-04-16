@@ -87,6 +87,12 @@ public class User {
             userImage = icon.getImage();
         }
 
+        if (movingRight && movingLeft) {
+
+            ImageIcon icon = new ImageIcon("Images/Baloo-Idle.png");
+            userImage = icon.getImage();
+        }
+
         // Ensure the user stays within the bounds of the world
         if (x < 0) {
             x = 0;
