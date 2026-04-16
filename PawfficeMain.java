@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-
 /**
  * Creates the actual panel for the user to interact with, still needs all the
  * implementation of the interactable stuff.
@@ -18,8 +17,8 @@ import java.awt.event.KeyEvent;
 
 public class PawfficeMain implements Runnable {
     // a constant for the world width, no height needed i think
-    private final int WORLD_WIDTH = 600;
-
+    private final int WORLD_WIDTH = 750; 
+    private final int FRAME_WIDTH = 600;
     // user
     private User user;
 
@@ -29,7 +28,7 @@ public class PawfficeMain implements Runnable {
     // bed
     private Bed bed;
 
-    private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.jpeg");
+    private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
 
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
 
@@ -46,7 +45,7 @@ public class PawfficeMain implements Runnable {
     public void run() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Pawffice");
-        frame.setPreferredSize(new Dimension(600, 400));
+        frame.setPreferredSize(new Dimension(FRAME_WIDTH, 400));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -56,12 +55,14 @@ public class PawfficeMain implements Runnable {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+                // cameraX = user.getX() + user.getWidth() / 2 - getWidth() / 2;
 
                 g.drawImage(BACKGROUND_IMAGE.getImage(), -cameraX, 0, 750, getHeight(), null);
-                g.drawImage(CARPET_IMAGE.getImage(), 125-cameraX, 200, 349, 184, null);
-                clock.draw(g, cameraX); 
+                g.drawImage(CARPET_IMAGE.getImage(), 125 - cameraX, 200, 349, 184, null);
+                clock.draw(g, cameraX);
                 bed.draw(g, cameraX);
-                
+
+                // System.out.println("Camera X: " + cameraX);
 
                 g.setColor(Color.RED);
                 g.fillRect(0 - cameraX, 0, 8, getHeight());
@@ -141,6 +142,7 @@ public class PawfficeMain implements Runnable {
         if (cameraX + panelWidth > WORLD_WIDTH) {
             cameraX = WORLD_WIDTH - panelWidth;
         }
+        
     }
 
     public static void main(String[] args) {
