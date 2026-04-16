@@ -28,6 +28,9 @@ public class PawfficeMain implements Runnable {
     // bed
     private Bed bed;
 
+    //bookshelf
+    private Bookshelf bookshelf;
+
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
 
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
@@ -61,10 +64,12 @@ public class PawfficeMain implements Runnable {
                 g.drawImage(CARPET_IMAGE.getImage(), 125 - cameraX, 200, 449, 184, null);
                 clock.draw(g, cameraX);
                 bed.draw(g, cameraX);
+                bookshelf.draw(g, cameraX);
 
                 // System.out.println("Camera X: " + cameraX);
+                Color color = new Color(234, 199, 159);
 
-                g.setColor(Color.RED);
+                g.setColor(color);
                 g.fillRect(0 - cameraX, 0, 8, getHeight());
                 g.fillRect(WORLD_WIDTH - cameraX - 8, 0, 8, getHeight());
 
@@ -76,6 +81,7 @@ public class PawfficeMain implements Runnable {
         frame.pack();
         frame.setVisible(true);
         user = new User(panel.getWidth() / 2, panel.getHeight() / 2, WORLD_WIDTH);
+        bookshelf = new Bookshelf(395, 60);
         clock = new Clock(20, 10);
         bed = new Bed(575, 115);
         frame.addKeyListener(new KeyAdapter() {

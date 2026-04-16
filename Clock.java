@@ -3,8 +3,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
- * Creates the actual panel for the user to interact with, still needs all the
- * implementation of the interactable stuff.
+ * Clock implementation for Pawffice, will be an interactable object that gives the user
+ * the ability to set a pomodoro timer.
  * 
  * @author Team 10, the Bug Busters
  * @version Spring, 2026
