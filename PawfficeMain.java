@@ -23,6 +23,8 @@ public class PawfficeMain implements Runnable {
     // user
     private User user;
 
+    // clock
+    private Clock clock;
 
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.jpeg");
 
@@ -50,9 +52,9 @@ public class PawfficeMain implements Runnable {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                g.drawImage(BACKGROUND_IMAGE.getImage(), 0, 0, 750, getHeight(), null);
-
-            
+                g.drawImage(BACKGROUND_IMAGE.getImage(), -cameraX, 0, 750, getHeight(), null);
+                clock.draw(g, cameraX); 
+                
 
                 g.setColor(Color.RED);
                 g.fillRect(0 - cameraX, 0, 8, getHeight());
@@ -66,7 +68,7 @@ public class PawfficeMain implements Runnable {
         frame.pack();
         frame.setVisible(true);
         user = new User(panel.getWidth() / 2, panel.getHeight() / 2, WORLD_WIDTH);
-
+        clock = new Clock(30, 15);
         frame.addKeyListener(new KeyAdapter() {
 
             // THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
