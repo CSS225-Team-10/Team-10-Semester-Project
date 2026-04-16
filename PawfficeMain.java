@@ -26,7 +26,12 @@ public class PawfficeMain implements Runnable {
     // clock
     private Clock clock;
 
+    // bed
+    private Bed bed;
+
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.jpeg");
+
+    private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
 
     // Panel for our GUI.
     private JPanel panel;
@@ -53,7 +58,9 @@ public class PawfficeMain implements Runnable {
                 super.paintComponent(g);
 
                 g.drawImage(BACKGROUND_IMAGE.getImage(), -cameraX, 0, 750, getHeight(), null);
+                g.drawImage(CARPET_IMAGE.getImage(), 125-cameraX, 200, 349, 184, null);
                 clock.draw(g, cameraX); 
+                bed.draw(g, cameraX);
                 
 
                 g.setColor(Color.RED);
@@ -69,6 +76,7 @@ public class PawfficeMain implements Runnable {
         frame.setVisible(true);
         user = new User(panel.getWidth() / 2, panel.getHeight() / 2, WORLD_WIDTH);
         clock = new Clock(20, 10);
+        bed = new Bed(415, 115);
         frame.addKeyListener(new KeyAdapter() {
 
             // THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
