@@ -58,7 +58,7 @@ public class PawfficeMain implements Runnable {
                 // cameraX = user.getX() + user.getWidth() / 2 - getWidth() / 2;
 
                 g.drawImage(BACKGROUND_IMAGE.getImage(), -cameraX, 0, 750, getHeight(), null);
-                g.drawImage(CARPET_IMAGE.getImage(), 125 - cameraX, 200, 349, 184, null);
+                g.drawImage(CARPET_IMAGE.getImage(), 125 - cameraX, 200, 449, 184, null);
                 clock.draw(g, cameraX);
                 bed.draw(g, cameraX);
 
@@ -77,7 +77,7 @@ public class PawfficeMain implements Runnable {
         frame.setVisible(true);
         user = new User(panel.getWidth() / 2, panel.getHeight() / 2, WORLD_WIDTH);
         clock = new Clock(20, 10);
-        bed = new Bed(415, 115);
+        bed = new Bed(575, 115);
         frame.addKeyListener(new KeyAdapter() {
 
             // THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
