@@ -67,7 +67,7 @@ public class PawfficeMain implements Runnable {
                 // cameraX = user.getX() + user.getWidth() / 2 - getWidth() / 2;
 
                 g.drawImage(BACKGROUND_IMAGE.getImage(), -cameraX, 0, 750, getHeight(), null);
-                g.drawImage(CARPET_IMAGE.getImage(), 125 - cameraX, 200, 449, 184, null);
+                g.drawImage(CARPET_IMAGE.getImage(), 125 - cameraX, 200, 460, 184, null);
                 clock.draw(g, cameraX);
                 bed.draw(g, cameraX);
                 bookshelf.draw(g, cameraX);
