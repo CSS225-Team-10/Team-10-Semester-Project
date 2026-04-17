@@ -79,7 +79,6 @@ public class Bed extends RoomObject implements Runnable{
 
         //https://www.carecredit.com/well-u/health-wellness/tips-improve-mental-health/
         //https://mhanational.org/resources/31-tips-to-boost-your-mental-health/
-        //
 
         tipList.add("If you are struggling to increase your positivity, one thing you can do is practice gratitude! What are some things you are grateful for?");
         tipList.add("Take a few deep breaths! You are allowed to take breaks. Everything will be okay.");
