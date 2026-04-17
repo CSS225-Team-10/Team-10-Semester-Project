@@ -19,7 +19,7 @@ import java.awt.event.MouseAdapter;
 
 public class PawfficeMain implements Runnable {
     // a constant for the world width, no height needed i think
-    private final int WORLD_WIDTH = 750; 
+    private final int WORLD_WIDTH = 750;
     private final int FRAME_WIDTH = 600;
     // user
     private User user;
@@ -30,7 +30,7 @@ public class PawfficeMain implements Runnable {
     // bed
     private Bed bed;
 
-    //bookshelf
+    // bookshelf
     private Bookshelf bookshelf;
 
     // images that go straight on the frame, not interactable objects :D
@@ -79,14 +79,17 @@ public class PawfficeMain implements Runnable {
             }
         };
 
-        panel.addMouseListener(new MouseAdapter(){
+        panel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent e){
+            public void mousePressed(MouseEvent e) {
                 int mouseX = e.getX();
                 int mouseY = e.getY();
 
-                if(bed.isClicked(mouseX, mouseY, cameraX)){
+                if (bed.isClicked(mouseX, mouseY, cameraX)) {
                     javax.swing.SwingUtilities.invokeLater(bed);
+                }
+                if (clock.isClicked(mouseX, mouseY, cameraX)) {
+                    javax.swing.SwingUtilities.invokeLater(clock);
                 }
             }
         });
@@ -162,7 +165,7 @@ public class PawfficeMain implements Runnable {
         if (cameraX + panelWidth > WORLD_WIDTH) {
             cameraX = WORLD_WIDTH - panelWidth;
         }
-        
+
     }
 
     public static void main(String[] args) {
