@@ -1,6 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  * Bookshelf implementation for Pawffice, will be an interactable object that gives the user
@@ -30,6 +31,41 @@ public class Bookshelf extends RoomObject implements Runnable{
         g.drawImage(bookshelfImage, x - cameraX, y, width, height, null);
     }
 
-    //COMPLETE THE REST OF THE CLASS TO BE ABLE TO DOODLE! :D
-    //CALL DOODLE FRAME I THINK :)
+    /**
+     * Checks if the clock has been clicked based on mouse coordinates.
+     *
+     * @param mouseX The x-coordinate of the mouse
+     * @param mouseY The y-coordinate of the mouse
+     * @param cameraX The x-coordinate of the camera
+     * @return true if the clock is clicked, false otherwise
+     */
+    @Override
+    public boolean isClicked(int mouseX, int mouseY, int cameraX){
+        int screenX = x - cameraX;
+
+        return mouseX >= screenX && mouseX <= screenX + width
+            && mouseY >= y && mouseY <= y + height;
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public void run(){
+        DoodleFrame doodleFrame = new DoodleFrame();
+        doodleFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        doodleFrame.setTitle("Doodle Pad");
+        doodleFrame.setSize(500, 500);
+        doodleFrame.setVisible(true);
+        
+    }
+
+    /**
+     * The main method is responsible for creating a thread that will construct
+     * and show the graphical user interface.
+     */
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(new Bookshelf(0,0));
+    }
+}
 }
