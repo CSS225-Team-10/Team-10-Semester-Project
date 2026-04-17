@@ -125,6 +125,7 @@ public class Bed extends RoomObject implements Runnable{
         tipList.add("Healthy food is good for not only your body, but also your mind. There are associations between how you eat and how you feel. Healthy diets that have many fruits and veggies incorporated with lean protiens are best for mental health.");
         tipList.add("Stay hydrated! Hydration helps make sure that your brain is working optimally. Dehydration can lead to many different health problems, including but not limited to reduced brain cogniiton, dizziness, fatigue, ect. Keep your favorite glass or water bottle handy while working! Take a walk to go refill it on the breaks from your pomodoro timer. Stay well, happy studying!");
 
+
         //ADD WAY MORE TIPS LATER :)
 
         return tipList;
@@ -136,13 +137,20 @@ public class Bed extends RoomObject implements Runnable{
         return tips.get(rand.nextInt(tips.size()));
     }
 
+    public boolean isClicked(int mouseX, int mouseY, int cameraX){
+        int screenX = x - cameraX;
+
+        return mouseX >= screenX && mouseX <= screenX + width
+            && mouseY >= y && mouseY <= y + height;
+    }
+
 
     /**
      * The main method is responsible for creating a thread that will construct
      * and show the graphical user interface.
      */
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Bed());
+        javax.swing.SwingUtilities.invokeLater(new Bed(0,0));
     }
 
 }

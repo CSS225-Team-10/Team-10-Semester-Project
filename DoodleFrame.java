@@ -15,6 +15,8 @@ import javax.swing.JPanel;
  * Simple doodle pad for Pawffice. Click and drag to draw lines that stay on the
  * screen.
  * 
+ * Based off of code from Lab 8
+ * 
  * @author Team10, Bug Busters
  * @version May 2026
  */
@@ -46,7 +48,10 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
+        // button to clear frame
         JButton clearButton = new JButton("Clear");
+
+        //button to undo
         JButton undoButton = new JButton("Undo");
 
         JPanel buttonPanel = new JPanel();
