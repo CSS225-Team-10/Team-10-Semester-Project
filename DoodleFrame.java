@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 /**
  * Simple doodle pad for Pawffice. Click and drag to draw lines that stay on the
  * screen.
@@ -25,7 +26,7 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
     /**
      * Stores all drawn line segments.
      */
-    private ArrayList<Line> lines = new ArrayList<>();
+    private ArrayList<ArrayList<Line>> strokes = new ArrayList<>();
 
     /**
      * Previous mouse point.
@@ -36,6 +37,8 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
      * Drawing panel.
      */
     private JPanel panel;
+
+    private ArrayList<Line> currentStroke = new ArrayList<>();
 
     /**
      * The run method to set up the graphical user interface.
@@ -51,13 +54,12 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
         // button to clear frame
         JButton clearButton = new JButton("Clear");
 
-        //button to undo
+        // button to undo
         JButton undoButton = new JButton("Undo");
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(clearButton);
         buttonPanel.add(undoButton);
-
 
         panel = new JPanel() {
             @Override
@@ -69,25 +71,23 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
 
         panel.setBackground(java.awt.Color.WHITE);
 
-      
-
         panel.addMouseListener(this);
         panel.addMouseMotionListener(this);
 
-        clearButton.addActionListener(new ActionListener(){
-         public void actionPerformed(ActionEvent e) {
-          lines.clear();
-          panel.repaint();
-         }
+        clearButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                strokes.clear();
+                panel.repaint();
+            }
         });
 
-        undoButton.addActionListener(new ActionListener(){
-         public void actionPerformed(ActionEvent e){
-          if(!lines.isEmpty()){
-           lines.remove(lines.size()-1);
-           panel.repaint();
-          }
-         }
+        undoButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (!strokes.isEmpty()) {
+                    strokes.remove(strokes.size() - 1);
+                    panel.repaint();
+                }
+            }
         });
 
         frame.add(buttonPanel, BorderLayout.NORTH);
@@ -100,10 +100,13 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
      * Draw all saved lines.
      */
     private void redraw(Graphics g) {
-        for (Line line : lines) {
-            g.drawLine(line.x1, line.y1, line.x2, line.y2);
+        for (ArrayList<Line> stroke : strokes) {
+            for (Line line : stroke) {
+                g.drawLine(line.p1.x, line.p1.y, line.p2.x, line.p2.y);
+            }
         }
     }
+
 
     /**
      * Updates the location of the mouse press in the panel and sets the
@@ -114,6 +117,7 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
     @Override
     public void mousePressed(MouseEvent e) {
         lastMouse = e.getPoint();
+        currentStroke = new ArrayList<>();
     }
 
     /**
@@ -125,12 +129,23 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
     @Override
     public void mouseDragged(MouseEvent e) {
         Point current = e.getPoint();
-
-        lines.add(new Line(lastMouse.x, lastMouse.y, current.x, current.y));
-
+        currentStroke.add(new Line(lastMouse, e.getPoint()));
         lastMouse = current;
 
         panel.repaint();
+    }
+
+    /**
+     * Method for when the mouse is released.
+     * 
+     * @param e The mouse event
+     */
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        if (currentStroke != null && !currentStroke.isEmpty()) {
+            strokes.add(currentStroke); 
+            currentStroke = null;
+        }
     }
 
     /**
@@ -138,13 +153,12 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
      */
     private class Line {
 
-        int x1, y1, x2, y2;
+        protected Point p1;
+        protected Point p2;
 
-        public Line(int x1, int y1, int x2, int y2) {
-            this.x1 = x1;
-            this.y1 = y1;
-            this.x2 = x2;
-            this.y2 = y2;
+        public Line(Point p1, Point p2) {
+            this.p1 = p1;
+            this.p2 = p2;
         }
     }
 
