@@ -39,6 +39,7 @@ public class PawfficeMain implements Runnable {
     // images that go straight on the frame, not interactable objects :D
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
+    private static final ImageIcon CHAIR_IMAGE = new ImageIcon("Images/chair.png");
 
     // Panel for our GUI.
     private JPanel panel;
@@ -71,6 +72,7 @@ public class PawfficeMain implements Runnable {
                 bed.draw(g, cameraX);
                 bookshelf.draw(g, cameraX);
                 desk.draw(g, cameraX);
+                g.drawImage(CHAIR_IMAGE.getImage(), 178 - cameraX, 190, 136, 177, null);
 
                 // System.out.println("Camera X: " + cameraX);
                 Color color = new Color(234, 199, 159);
