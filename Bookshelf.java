@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
  * @version Spring, 2026
  */
 
-public class Bookshelf {
+public class Bookshelf extends RoomObject implements Runnable{
     private int x;
     private int y;
     private int width = 142;
