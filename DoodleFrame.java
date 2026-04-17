@@ -84,7 +84,7 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
         undoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (!strokes.isEmpty()) {
-                    strokes.remove(strokes.size() - 1);
+                    strokes.remove(strokes.size()-1);
                     panel.repaint();
                 }
             }
@@ -107,7 +107,6 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
         }
     }
 
-
     /**
      * Updates the location of the mouse press in the panel and sets the
      * animation type.
@@ -129,7 +128,7 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
     @Override
     public void mouseDragged(MouseEvent e) {
         Point current = e.getPoint();
-        currentStroke.add(new Line(lastMouse, e.getPoint()));
+        currentStroke.add(new Line(lastMouse, current));
         lastMouse = current;
 
         panel.repaint();
@@ -147,6 +146,7 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
             currentStroke = null;
         }
     }
+
 
     /**
      * Simple inner class to store a line.
