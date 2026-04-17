@@ -105,6 +105,12 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
                 g.drawLine(line.p1.x, line.p1.y, line.p2.x, line.p2.y);
             }
         }
+
+        if (currentStroke != null) {
+        for (Line line : currentStroke) {
+            g.drawLine(line.p1.x, line.p1.y, line.p2.x, line.p2.y);
+        }
+    }
     }
 
     /**
