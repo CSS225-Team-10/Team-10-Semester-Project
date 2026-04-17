@@ -33,8 +33,8 @@ public class Bed extends RoomObject implements Runnable{
 
     private int x;
     private int y;
-    private int width = 173;
-    private int height = 257;
+    private int width = 163;
+    private int height = 262;
 
     private Image bedImage;
     

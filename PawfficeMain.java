@@ -33,6 +33,9 @@ public class PawfficeMain implements Runnable {
     // bookshelf
     private Bookshelf bookshelf;
 
+    // desk
+    private Desk desk;
+
     // images that go straight on the frame, not interactable objects :D
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
@@ -67,6 +70,7 @@ public class PawfficeMain implements Runnable {
                 clock.draw(g, cameraX);
                 bed.draw(g, cameraX);
                 bookshelf.draw(g, cameraX);
+                desk.draw(g, cameraX);
 
                 // System.out.println("Camera X: " + cameraX);
                 Color color = new Color(234, 199, 159);
@@ -101,9 +105,10 @@ public class PawfficeMain implements Runnable {
         frame.pack();
         frame.setVisible(true);
         user = new User(panel.getWidth() / 2, panel.getHeight() / 2, WORLD_WIDTH);
-        bookshelf = new Bookshelf(395, 60);
+        bookshelf = new Bookshelf(393, 60);
         clock = new Clock(20, 10);
-        bed = new Bed(575, 115);
+        bed = new Bed(586, 115);
+        desk = new Desk(178, 140);
         frame.addKeyListener(new KeyAdapter() {
 
             // THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
