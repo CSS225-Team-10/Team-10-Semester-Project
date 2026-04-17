@@ -43,6 +43,8 @@ public class PawfficeMain implements Runnable {
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
     private static final ImageIcon CHAIR_IMAGE = new ImageIcon("Images/chair.png");
+    //private static final ImageIcon SHADOWS_IMAGE = new ImageIcon("Images/shadows.png");
+
 
     // Panel for our GUI.
     private JPanel panel;
@@ -89,6 +91,7 @@ public class PawfficeMain implements Runnable {
                 g.fillRect(WORLD_WIDTH - cameraX - 8, 0, 8, getHeight());
 
                 user.draw(g, cameraX);
+                //g.drawImage(SHADOWS_IMAGE.getImage(), 182 - cameraX, 63, 404, 245, null);
             }
         };
 
