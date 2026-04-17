@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.MouseAdapter;
 
 /**
@@ -59,6 +62,10 @@ public class PawfficeMain implements Runnable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setResizable(false);
+        try {
+            frame.setIconImage(ImageIO.read(new File("Images/appicon.png")));
+        } catch (IOException e) {
+        }
 
         panel = new JPanel() {
             @Override
