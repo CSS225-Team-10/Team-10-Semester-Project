@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 
 /**
  * Creates the actual panel for the user to interact with, still needs all the
@@ -76,6 +78,18 @@ public class PawfficeMain implements Runnable {
                 user.draw(g, cameraX);
             }
         };
+
+        panel.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e){
+                int mouseX = e.getX();
+                int mouseY = e.getY();
+
+                if(bed.isClicked(mouseX, mouseY, cameraX)){
+                    javax.swing.SwingUtilities.invokeLater(bed);
+                }
+            }
+        });
 
         frame.add(panel);
         frame.pack();
