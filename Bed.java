@@ -67,7 +67,7 @@ public class Bed extends RoomObject implements Runnable{
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Pawffice Tips");
         frame.setPreferredSize(new Dimension(300, 325));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
         label = new JLabel("I hope you like this helpful tip!");
