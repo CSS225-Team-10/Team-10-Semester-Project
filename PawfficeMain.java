@@ -31,8 +31,8 @@ public class PawfficeMain implements Runnable {
     //bookshelf
     private Bookshelf bookshelf;
 
+    // images that go straight on the frame, not interactable objects :D
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
-
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
 
     // Panel for our GUI.

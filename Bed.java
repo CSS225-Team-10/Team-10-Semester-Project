@@ -37,7 +37,14 @@ public class Bed extends RoomObject implements Runnable{
     private int height = 257;
 
     private Image bedImage;
-
+    
+    /**
+     * Constructor for the bed, will be an interactable object that gives the user
+     * mental health tips when clicked on.
+     * 
+     * @param x The x-coordinate of the bed
+     * @param y
+     */
     public Bed(int x, int y){
         tips = populateTips();
         
