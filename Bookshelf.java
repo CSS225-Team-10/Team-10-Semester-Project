@@ -52,11 +52,7 @@ public class Bookshelf extends RoomObject implements Runnable{
      */
     @Override
     public void run(){
-        DoodleFrame doodleFrame = new DoodleFrame();
-        doodleFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        doodleFrame.setTitle("Doodle Pad");
-        doodleFrame.setSize(500, 500);
-        doodleFrame.setVisible(true);
+        javax.swing.SwingUtilities.invokeLater(new DoodleFrame());
         
     }
 
@@ -67,5 +63,4 @@ public class Bookshelf extends RoomObject implements Runnable{
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Bookshelf(0,0));
     }
-}
 }

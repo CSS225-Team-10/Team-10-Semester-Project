@@ -45,7 +45,7 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Pawffice Doodle Pad");
         frame.setPreferredSize(new Dimension(500, 500));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
         // button to clear frame
