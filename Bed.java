@@ -136,7 +136,7 @@ public class Bed extends RoomObject implements Runnable{
      * and show the graphical user interface.
      */
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Bed());
+        javax.swing.SwingUtilities.invokeLater(new Bed(0,0));
     }
 
 }
