@@ -130,6 +130,13 @@ public class Bed extends RoomObject implements Runnable{
         return tips.get(rand.nextInt(tips.size()));
     }
 
+    public boolean isClicked(int mouseX, int mouseY, int cameraX){
+        int screenX = x - cameraX;
+
+        return mouseX >= screenX && mouseX <= screenX + width
+            && mouseY >= y && mouseY <= y + height;
+    }
+
 
     /**
      * The main method is responsible for creating a thread that will construct
