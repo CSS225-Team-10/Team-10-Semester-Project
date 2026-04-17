@@ -3,10 +3,11 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.border.Border;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,6 +30,27 @@ public class Bed extends RoomObject implements Runnable{
     private JButton newTipButton;
 
     private JTextArea tipArea;
+
+    private int x;
+    private int y;
+    private int width = 173;
+    private int height = 257;
+
+    private Image bedImage;
+
+    public Bed(int x, int y){
+        tips = populateTips();
+        
+        this.x = x;
+        this.y = y;
+
+        ImageIcon icon = new ImageIcon("Images/bed.png");
+        bedImage = icon.getImage();
+    }
+
+    public void draw(Graphics g, int cameraX) {
+        g.drawImage(bedImage, x - cameraX, y, width, height, null);
+    }
 
     /**
      * 
@@ -108,9 +130,6 @@ public class Bed extends RoomObject implements Runnable{
         return tips.get(rand.nextInt(tips.size()));
     }
 
-    public Bed(){
-        tips = populateTips();
-    }
 
     /**
      * The main method is responsible for creating a thread that will construct
