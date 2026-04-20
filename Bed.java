@@ -146,7 +146,7 @@ public class Bed extends RoomObject implements Runnable{
      * The main method is responsible for creating a thread that will construct
      * and show the graphical user interface.
      */
-    public static void main(String[] args) {
+    public void launch(){
         javax.swing.SwingUtilities.invokeLater(new Bed(0,0));
     }
 
