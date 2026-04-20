@@ -12,8 +12,6 @@ import javax.swing.ImageIcon;
 
 public class Desk extends RoomObject implements Runnable {
     
-    private int x;
-    private int y;
     private int width = 214;
     private int height = 131;
     

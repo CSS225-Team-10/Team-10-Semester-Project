@@ -31,8 +31,6 @@ public class Bed extends RoomObject implements Runnable{
 
     private JTextArea tipArea;
 
-    private int x;
-    private int y;
     private int width = 163;
     private int height = 262;
 

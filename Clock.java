@@ -12,8 +12,7 @@ import javax.swing.JFrame;
  */
 
 public class Clock extends RoomObject implements Runnable{
-    private int x;
-    private int y;
+
     private int width = 128;
     private int height = 128;
 

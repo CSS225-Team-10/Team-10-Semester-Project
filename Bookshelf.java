@@ -12,8 +12,7 @@ import javax.swing.ImageIcon;
  */
 
 public class Bookshelf extends RoomObject implements Runnable{
-    private int x;
-    private int y;
+
     private int width = 193;
     private int height = 248;
 
