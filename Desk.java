@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
  * @version Spring, 2026
  */
 
-public class Desk extends RoomObject implements Runnable {
+public class Desk extends RoomObject{
     
     private int width = 214;
     private int height = 131;
@@ -30,16 +30,16 @@ public class Desk extends RoomObject implements Runnable {
         g.drawImage(deskImage, x - cameraX, y, width, height, null);
     }
 
+    @Override
     public boolean isClicked(int mouseX, int mouseY, int cameraX){
-        return false;
-    }
+        int screenX = x - cameraX;
 
-    public void run(){
-        
+        return mouseX >= screenX && mouseX <= screenX + width
+            && mouseY >= y && mouseY <= y + height;
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Desk(0,0));
+        javax.swing.SwingUtilities.invokeLater(new NotesFrame(0,0));
     }
     //I was gonna write this code but i think instead I wanna get
     //the clicking on pawwfice main working because this
