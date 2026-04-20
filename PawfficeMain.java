@@ -105,13 +105,16 @@ public class PawfficeMain implements Runnable {
                     javax.swing.SwingUtilities.invokeLater(bed);
                 }
                 if (clock.isClicked(mouseX, mouseY, cameraX)) {
-                    javax.swing.SwingUtilities.invokeLater(clock);
+                    clock.launch();
                 }
                 if (bookshelf.isClicked(mouseX, mouseY, cameraX)) {
-                    javax.swing.SwingUtilities.invokeLater(bookshelf);
+                    bookshelf.launch();
                 }
                 if (user.isClicked(mouseX, mouseY, cameraX)) {
                     user.clicked(mouseX, mouseY, cameraX);
+                }
+                if (desk.isClicked(mouseX, mouseY, cameraX)) {
+                    desk.launch();
                 }
             }
         });
