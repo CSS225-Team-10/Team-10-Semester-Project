@@ -108,8 +108,6 @@ public class User {
 
         if (isClickedState) {
             userImage = new ImageIcon("Images/heart-Sprite.png").getImage();
-            movingLeft = false;
-            movingRight = false;
             return; 
         }
 
@@ -140,10 +138,18 @@ public class User {
     }
 
     public void setMovingLeft(boolean movingLeft) {
+        if (isClickedState) {
+            this.movingLeft = false;
+            return; 
+        }
         this.movingLeft = movingLeft;
     }
 
     public void setMovingRight(boolean movingRight) {
+        if (isClickedState) {
+            this.movingRight = false;
+            return; 
+        }
         this.movingRight = movingRight;
     }
 
