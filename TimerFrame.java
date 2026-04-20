@@ -169,7 +169,7 @@ public class TimerFrame extends JFrame {
 
     public static void main(String[] args) {
         TimerFrame gui = new TimerFrame();
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         gui.setTitle("Pomodoro Timer");
         gui.setSize(500, 500);
         gui.setVisible(true);

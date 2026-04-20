@@ -11,7 +11,7 @@ import javax.swing.JFrame;
  * @version Spring, 2026
  */
 
-public class Clock extends RoomObject implements Runnable{
+public class Clock extends RoomObject{
 
     private int width = 128;
     private int height = 128;
@@ -46,24 +46,12 @@ public class Clock extends RoomObject implements Runnable{
             && mouseY >= y && mouseY <= y + height;
     }
 
-    /**
-     * 
-     */
-    @Override
-    public void run(){
-        TimerFrame timerFrame = new TimerFrame();
-        timerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        timerFrame.setTitle("Pomodoro Timer");
-        timerFrame.setSize(500, 500);
-        timerFrame.setVisible(true);
-        
-    }
 
     /**
      * The main method is responsible for creating a thread that will construct
      * and show the graphical user interface.
      */
-    public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Clock(0,0));
+    public void launch(){
+        javax.swing.SwingUtilities.invokeLater(new TimerFrame());
     }
 }
