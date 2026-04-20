@@ -107,7 +107,7 @@ public class User {
         }
 
         if (isClickedState) {
-            userImage = new ImageIcon("Images/carpet.png").getImage();
+            userImage = new ImageIcon("Images/heart-Sprite.png").getImage();
             return; 
         }
 
