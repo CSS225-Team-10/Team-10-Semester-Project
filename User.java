@@ -108,6 +108,8 @@ public class User {
 
         if (isClickedState) {
             userImage = new ImageIcon("Images/heart-Sprite.png").getImage();
+            movingLeft = false;
+            movingRight = false;
             return; 
         }
 
