@@ -34,6 +34,8 @@ public class User {
     private int worldWidth;
 
     private Image userImage;
+    
+    private boolean isClickedState = false;
 
     public User(int x, int y, int worldWidth) {
         this.x = x;
@@ -55,6 +57,23 @@ public class User {
             frame = (frame + 1) % 2;
         }
     };
+
+    public void clicked(int mouseX, int mouseY, int cameraX) {
+        if (isClicked(mouseX, mouseY, cameraX)) {
+            isClickedState = true;
+
+            // 2 sec delay
+            Timer revertTimer = new Timer(2000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    isClickedState = false;
+                    ((Timer) e.getSource()).stop();
+                }
+            });
+            revertTimer.setRepeats(false);
+            revertTimer.start();
+        }
+    }
 
     public void update() {
         // if moving left, subtract from speed
@@ -87,6 +106,11 @@ public class User {
             userImage = icon.getImage();
         }
 
+        if (isClickedState) {
+            userImage = new ImageIcon("Images/carpet.png").getImage();
+            return; 
+        }
+
         if (movingRight && movingLeft) {
 
             ImageIcon icon = new ImageIcon("Images/Baloo-Idle.png");
@@ -101,10 +125,6 @@ public class User {
             x = worldWidth - width;
         }
 
-        if (isClicked(x, y, x)) {
-            ImageIcon icon = new ImageIcon("Images/carpet.png");
-            userImage = icon.getImage();
-        }
 
     }
 
@@ -139,7 +159,6 @@ public class User {
 
     public boolean isClicked(int mouseX, int mouseY, int cameraX) {
         int screenX = x - cameraX;
-
         return mouseX >= screenX && mouseX <= screenX + width && mouseY >= y && mouseY <= y + height;
     }
 }
