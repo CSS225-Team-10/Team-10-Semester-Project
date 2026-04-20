@@ -38,8 +38,8 @@ public class Desk extends RoomObject{
             && mouseY >= y && mouseY <= y + height;
     }
 
-    public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new NotesFrame(0,0));
+    public void launch() {
+        javax.swing.SwingUtilities.invokeLater(new NotesFrame());
     }
     //I was gonna write this code but i think instead I wanna get
     //the clicking on pawwfice main working because this
