@@ -73,7 +73,7 @@ public class User {
         if (movingRight) {
             x += speed;
             ImageIcon icon;
-            if (frame == 0){
+            if (frame == 0) {
                 icon = new ImageIcon("Images/Baloo-WalkR-1.png");
             } else {
                 icon = new ImageIcon("Images/Baloo-WalkR-2.png");
@@ -100,6 +100,12 @@ public class User {
         if (x + width > worldWidth) {
             x = worldWidth - width;
         }
+
+        if (isClicked(x, y, x)) {
+            ImageIcon icon = new ImageIcon("Images/carpet.png");
+            userImage = icon.getImage();
+        }
+
     }
 
     public void draw(Graphics g, int cameraX) {
@@ -129,5 +135,11 @@ public class User {
 
     public int getWidth() {
         return width;
+    }
+
+    public boolean isClicked(int mouseX, int mouseY, int cameraX) {
+        int screenX = x - cameraX;
+
+        return mouseX >= screenX && mouseX <= screenX + width && mouseY >= y && mouseY <= y + height;
     }
 }

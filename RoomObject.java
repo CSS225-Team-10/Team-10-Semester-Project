@@ -10,6 +10,11 @@ abstract class RoomObject{
     //These are supposed to say where the object is on the screen
     int x;
     int y;
+
+    public RoomObject(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
     
     public abstract boolean isClicked(int mouseX, int mouseY, int cameraX);
 }
