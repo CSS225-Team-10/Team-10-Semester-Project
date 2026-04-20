@@ -32,4 +32,9 @@ abstract class RoomObject{
      * @return
      */
     public abstract boolean isClicked(int mouseX, int mouseY, int cameraX);
+
+    /**
+     * This will launch the frames we want when we click on the different room objects;
+     */
+    public abstract void launch();
 }
