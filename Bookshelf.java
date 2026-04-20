@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  * @version Spring, 2026
  */
 
-public class Bookshelf extends RoomObject implements Runnable{
+public class Bookshelf extends RoomObject{
 
     private int width = 193;
     private int height = 248;
@@ -49,16 +49,9 @@ public class Bookshelf extends RoomObject implements Runnable{
      * 
      */
     @Override
-    public void run(){
+    public void launch(){
         javax.swing.SwingUtilities.invokeLater(new DoodleFrame());
         
     }
 
-    /**
-     * The main method is responsible for creating a thread that will construct
-     * and show the graphical user interface.
-     */
-    public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Bookshelf(0,0));
-    }
 }
