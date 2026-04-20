@@ -20,8 +20,7 @@ public class Bookshelf extends RoomObject implements Runnable{
     private Image bookshelfImage;
 
     public Bookshelf(int x, int y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
 
         ImageIcon icon = new ImageIcon("Images/bookshelf.png");
         bookshelfImage = icon.getImage();

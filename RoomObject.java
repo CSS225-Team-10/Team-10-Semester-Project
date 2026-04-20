@@ -11,10 +11,25 @@ abstract class RoomObject{
     int x;
     int y;
 
+    /**
+     * Abstract constructor, putting the object at x and y.
+     * 
+     * @param x x point
+     * @param y y point
+     */
     public RoomObject(int x, int y) {
         this.x = x;
         this.y = y;
     }
     
+    /**
+     * Checks if object is clicked at the point where the mouse is clicking.
+     * Must be completed in all classes extending RoomObject.
+     * 
+     * @param mouseX x point of mouse
+     * @param mouseY y point of mouse
+     * @param cameraX x point of camera
+     * @return
+     */
     public abstract boolean isClicked(int mouseX, int mouseY, int cameraX);
 }

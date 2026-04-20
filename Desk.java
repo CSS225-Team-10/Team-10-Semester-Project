@@ -22,8 +22,7 @@ public class Desk extends RoomObject implements Runnable {
     private Image deskImage;
 
     public Desk(int x, int y){
-        this.x = x;
-        this.y = y;
+        super(x, y);
 
         ImageIcon icon = new ImageIcon("Images/desk.png");
         deskImage = icon.getImage();

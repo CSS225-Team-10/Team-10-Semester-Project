@@ -46,10 +46,9 @@ public class Bed extends RoomObject implements Runnable{
      * @param y
      */
     public Bed(int x, int y){
+        super(x, y);
         tips = populateTips();
         
-        this.x = x;
-        this.y = y;
 
         ImageIcon icon = new ImageIcon("Images/bed.png");
         bedImage = icon.getImage();

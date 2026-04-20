@@ -20,8 +20,7 @@ public class Clock extends RoomObject implements Runnable{
     private Image clockImage;
 
     public Clock(int x, int y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
 
         ImageIcon icon = new ImageIcon("Images/clock.png");
         clockImage = icon.getImage();
