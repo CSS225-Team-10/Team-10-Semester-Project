@@ -52,6 +52,6 @@ public class Clock extends RoomObject{
      * and show the graphical user interface.
      */
     public void launch(){
-        javax.swing.SwingUtilities.invokeLater(new TimerFrame());
+        new TimerFrame().setVisible(true);
     }
 }

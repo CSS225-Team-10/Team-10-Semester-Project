@@ -15,7 +15,7 @@ import javax.swing.*;
  * @author Team 10
  * @version April 2026
  */
-public class TimerFrame extends JFrame {
+public class TimerFrame extends JFrame implements Runnable{
 
     //labels for user to enter time requested for work and break
     private JLabel workLabel, breakLabel, timerLabel, sessionLabel;
@@ -45,6 +45,9 @@ public class TimerFrame extends JFrame {
      * Constructor that creates timer frame
      */
     public TimerFrame() {
+        setTitle("Pomodoro Timer");
+        setSize(500, 500);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(10, 10, 10, 10));
 
         workLabel = new JLabel("Work minutes:", SwingConstants.CENTER);
@@ -77,51 +80,51 @@ public class TimerFrame extends JFrame {
         //timer runs every second
         timer = new Timer(1000, new TimeClass());
 
-        startButton.addActionListener(new StartEvent());
-        stopButton.addActionListener(new StopEvent());
-        resetButton.addActionListener(new ResetEvent());
+        startButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startTimer();
+            }
+        });
+        stopButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop();
+            }
+        });
+        resetButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                resetTimer();
+            }
+        });
     }
-
     
     //start button 
-    private class StartEvent implements ActionListener {
+    private void startTimer() {
+        int workMinutes = Integer.parseInt(workField.getText());
+        int breakMinutes = Integer.parseInt(breakField.getText());
 
-        public void actionPerformed(ActionEvent e) {
-                int workMinutes = Integer.parseInt(workField.getText());
-                int breakMinutes = Integer.parseInt(breakField.getText());
+        workSeconds = workMinutes * 60;
+        breakSeconds = breakMinutes * 60;
 
-                workSeconds = workMinutes * 60;
-                breakSeconds = breakMinutes * 60;
+        isWorkSession = true;
+        counter = workSeconds;
 
-                isWorkSession = true;
-                counter = workSeconds;
+        sessionLabel.setText("Work Time");
+        timerLabel.setText(formatTime(counter));
 
-                sessionLabel.setText("Work Time");
-                timerLabel.setText(formatTime(counter));
-
-                timer.start();
-        }
-    }
-
-    //stop button 
-    private class StopEvent implements ActionListener {
-
-        public void actionPerformed(ActionEvent e) {
-            timer.stop();
-        }
+        timer.start();
     }
 
     //reset button 
-    private class ResetEvent implements ActionListener {
-
-        public void actionPerformed(ActionEvent e) {
-            timer.stop();
-            counter = 0;
-            timerLabel.setText("00:00");
-            sessionLabel.setText("Waiting to start");
-            workField.setText("");
-            breakField.setText("");
-        }
+    public void resetTimer() {
+        timer.stop();
+        counter = 0;
+        timerLabel.setText("00:00");
+        sessionLabel.setText("Waiting to start");
+        workField.setText("");
+        breakField.setText("");
     }
 
     // timer logic
@@ -167,11 +170,12 @@ public class TimerFrame extends JFrame {
         return minString + ":" + secString;
     }
 
-    public static void main(String[] args) {
-        TimerFrame gui = new TimerFrame();
-        gui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        gui.setTitle("Pomodoro Timer");
-        gui.setSize(500, 500);
-        gui.setVisible(true);
+    @Override
+    public void run(){
+        setVisible(true);
+    }
+
+    public void launch() {
+        javax.swing.SwingUtilities.invokeLater(this);
     }
 }
