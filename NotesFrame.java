@@ -56,6 +56,7 @@ public class NotesFrame implements Runnable{
         frame.add(scrollPane, BorderLayout.CENTER);
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
+        frame.pack();
         frame.setVisible(true);
     }
 }
