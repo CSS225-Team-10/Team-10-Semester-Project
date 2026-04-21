@@ -24,4 +24,24 @@ public class Bone extends RoomObject{
 
         isClicked = false;
     }
+
+    /**
+     * Checks if object is clicked at the point where the mouse is clicking.
+     * Must be completed in all classes extending RoomObject.
+     * 
+     * @param mouseX x point of mouse
+     * @param mouseY y point of mouse
+     * @param cameraX x point of camera
+     * @return
+     */
+    public boolean isClicked(int mouseX, int mouseY, int cameraX) {
+        return isClicked;
+    }
+
+    /**
+     * This will launch the frames we want when we click on the different room objects;
+     */
+    public void launch() {
+        return;
+    }
 }
