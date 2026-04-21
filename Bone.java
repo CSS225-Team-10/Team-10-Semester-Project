@@ -1,3 +1,7 @@
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 /**
  * Interactable bone, can be picked up, Baloo will follow and the bone will drop after being unclicked.
  * 
@@ -12,6 +16,10 @@ public class Bone extends RoomObject{
      */
     private boolean isClicked;
 
+    private int width = 40;
+    private int height = 40;
+
+    private Image bookshelfImage;
 
     /**
      * Constructor for the Bone class.
@@ -23,6 +31,8 @@ public class Bone extends RoomObject{
         super(x, y);
 
         isClicked = false;
+        ImageIcon icon = new ImageIcon("Images/bookshelf.png");
+        bookshelfImage = icon.getImage();
     }
 
     /**
@@ -35,13 +45,16 @@ public class Bone extends RoomObject{
      * @return
      */
     public boolean isClicked(int mouseX, int mouseY, int cameraX) {
-        return isClicked;
+        int screenX = x - cameraX;
+        int screenY = y;
+
+        return mouseX >= screenX && mouseX <= screenX + width && mouseY >= screenY && mouseY <= screenY + height;
     }
 
     /**
-     * This will launch the frames we want when we click on the different room objects;
+     * This will launch the frames we want when we click on the different room objects
      */
     public void launch() {
-        return;
+
     }
 }
