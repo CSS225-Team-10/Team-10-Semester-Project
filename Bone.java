@@ -2,7 +2,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-
 /**
  * Interactable bone, can be picked up, Baloo will follow and the bone will drop
  * after being unclicked.
@@ -20,6 +19,7 @@ public class Bone extends RoomObject implements Runnable {
 
     private int width = 40;
     private int height = 40;
+
 
     private Image boneImage;
 
@@ -56,11 +56,15 @@ public class Bone extends RoomObject implements Runnable {
     /**
      * Draws the bone on the screen.
      * 
-     * @param g Graphics component
+     * @param g       Graphics component
      * @param cameraX the camera to draw in comparison to
      */
     public void draw(Graphics g, int cameraX) {
         g.drawImage(boneImage, x - cameraX, y, width, height, null);
+    }
+
+    public void clicked() {
+        isClicked = !isClicked;
     }
 
     /**
@@ -83,7 +87,6 @@ public class Bone extends RoomObject implements Runnable {
             x = mouseX;
             y = mouseY;
         } else {
-            
         }
     }
 
@@ -91,7 +94,7 @@ public class Bone extends RoomObject implements Runnable {
      * Runs the bone's behavior in a separate thread.
      */
     @Override
-    public void run(){
+    public void run() {
 
     }
 

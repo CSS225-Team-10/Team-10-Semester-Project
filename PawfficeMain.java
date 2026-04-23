@@ -11,6 +11,8 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseMotionAdapter;
 
 /**
  * Creates the actual panel for the user to interact with, still needs all the
@@ -105,6 +107,11 @@ public class PawfficeMain implements Runnable {
                 int mouseX = e.getX();
                 int mouseY = e.getY();
 
+                if (bone.isClicked(mouseX, mouseY, cameraX)) {
+                    bone.clicked();
+                    return;
+                }
+
                 if (bed.isClicked(mouseX, mouseY, cameraX)) {
                     javax.swing.SwingUtilities.invokeLater(bed);
                 }
@@ -120,6 +127,16 @@ public class PawfficeMain implements Runnable {
                 if (desk.isClicked(mouseX, mouseY, cameraX)) {
                     desk.launch();
                 }
+            }
+        });
+
+        panel.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                int mouseX = e.getX();
+                int mouseY = e.getY();
+
+                bone.dragBone(mouseX, mouseY);
             }
         });
 
@@ -168,6 +185,7 @@ public class PawfficeMain implements Runnable {
             panel.repaint();
             updateCamera();
             user.update();
+
 
             try {
                 // this represents the games fps!!!
