@@ -64,7 +64,31 @@ public class Bone extends RoomObject implements Runnable {
     }
 
     /**
+     * Sets the clicked state of the bone.
      * 
+     * @param clicked the new clicked state of the bone :P
+     */
+    public void setClicked(boolean clicked) {
+        isClicked = clicked;
+    }
+
+    /**
+     * Drags the bone if the bone is clicked!
+     * 
+     * @param mouseX
+     * @param mouseY
+     */
+    public void dragBone(int mouseX, int mouseY) {
+        if (isClicked) {
+            x = mouseX;
+            y = mouseY;
+        } else {
+            
+        }
+    }
+
+    /**
+     * Runs the bone's behavior in a separate thread.
      */
     @Override
     public void run(){

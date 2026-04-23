@@ -39,6 +39,9 @@ public class PawfficeMain implements Runnable {
     // desk
     private Desk desk;
 
+    //bone
+    private Bone bone;
+
     // images that go straight on the frame, not interactable objects :D
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
@@ -81,6 +84,7 @@ public class PawfficeMain implements Runnable {
                 bed.draw(g, cameraX);
                 bookshelf.draw(g, cameraX);
                 desk.draw(g, cameraX);
+                bone.draw(g, cameraX);
                 g.drawImage(CHAIR_IMAGE.getImage(), 178 - cameraX, 190, 136, 177, null);
 
                 // System.out.println("Camera X: " + cameraX);
@@ -127,6 +131,7 @@ public class PawfficeMain implements Runnable {
         clock = new Clock(20, 10);
         bed = new Bed(586, 115);
         desk = new Desk(178, 140);
+        bone = new Bone(300, 200);
         frame.addKeyListener(new KeyAdapter() {
 
             // THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
