@@ -18,6 +18,12 @@ public class Bookshelf extends RoomObject{
 
     private Image bookshelfImage;
 
+    /**
+     * The constructor for the bookshelf class.
+     * 
+     * @param x x coord
+     * @param y y coord
+     */
     public Bookshelf(int x, int y) {
         super(x, y);
 
@@ -25,6 +31,12 @@ public class Bookshelf extends RoomObject{
         bookshelfImage = icon.getImage();
     }
 
+    /**
+     * Draws the user on the screen.
+     * 
+     * @param g Graphics component
+     * @param cameraX the camera to draw in comparison to
+     */
     public void draw(Graphics g, int cameraX) {
         g.drawImage(bookshelfImage, x - cameraX, y, width, height, null);
     }
@@ -46,7 +58,8 @@ public class Bookshelf extends RoomObject{
     }
 
     /**
-     * 
+     * The main method is responsible for creating a thread that will construct
+     * and show the graphical user interface.
      */
     @Override
     public void launch(){

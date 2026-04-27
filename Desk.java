@@ -59,7 +59,8 @@ public class Desk extends RoomObject{
     }
 
     /**
-     * This will launch the frames we want when we click on the different room objects;
+     * The main method is responsible for creating a thread that will construct
+     * and show the graphical user interface.
      */
     public void launch() {
         javax.swing.SwingUtilities.invokeLater(new NotesFrame());
