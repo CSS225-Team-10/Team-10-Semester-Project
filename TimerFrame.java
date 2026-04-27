@@ -47,7 +47,7 @@ public class TimerFrame extends JFrame implements Runnable {
      */
     public TimerFrame() {
         setTitle("Pomodoro Timer");
-        setSize(500, 500);
+        setSize(350, 450);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(10, 10, 10, 10));
 
