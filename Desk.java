@@ -19,6 +19,12 @@ public class Desk extends RoomObject{
     
     private Image deskImage;
 
+    /**
+     * The constructor for the desk class.
+     * 
+     * @param x x coord
+     * @param y y coord
+     */
     public Desk(int x, int y){
         super(x, y);
 
@@ -26,10 +32,24 @@ public class Desk extends RoomObject{
         deskImage = icon.getImage();
     }
 
+    /**
+     * Draws the desk on the screen.
+     * 
+     * @param g graphics component
+     * @param cameraX the camera to draw in comparison to
+     */
     public void draw(Graphics g, int cameraX) {
         g.drawImage(deskImage, x - cameraX, y, width, height, null);
     }
 
+    /**
+     * Checks if the desk is clicked at the given mouse coordinates.
+     * 
+     * @param mouseX x point of mouse
+     * @param mouseY y point of mouse
+     * @param cameraX x point of camera
+     * @return true if clicked, false otherwise
+     */
     @Override
     public boolean isClicked(int mouseX, int mouseY, int cameraX){
         int screenX = x - cameraX;
@@ -38,6 +58,9 @@ public class Desk extends RoomObject{
             && mouseY >= y && mouseY <= y + height;
     }
 
+    /**
+     * This will launch the frames we want when we click on the different room objects;
+     */
     public void launch() {
         javax.swing.SwingUtilities.invokeLater(new NotesFrame());
     }
