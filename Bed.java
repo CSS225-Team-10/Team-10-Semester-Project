@@ -41,7 +41,7 @@ public class Bed extends RoomObject implements Runnable{
      * mental health tips when clicked on.
      * 
      * @param x The x-coordinate of the bed
-     * @param y
+     * @param y The y-coordinate of the bed
      */
     public Bed(int x, int y){
         super(x, y);
@@ -52,12 +52,18 @@ public class Bed extends RoomObject implements Runnable{
         bedImage = icon.getImage();
     }
 
+    /**
+     * Draws the user on the screen.
+     * 
+     * @param g Graphics component
+     * @param cameraX the camera to draw in comparison to
+     */
     public void draw(Graphics g, int cameraX) {
         g.drawImage(bedImage, x - cameraX, y, width, height, null);
     }
 
     /**
-     * 
+     * The run method to set up the graphical user interface.
      */
     @Override
     public void run(){
@@ -100,6 +106,11 @@ public class Bed extends RoomObject implements Runnable{
         frame.setVisible(true);
     }
 
+    /**
+     * Populates the list of tips.
+     * 
+     * @return the list of tips
+     */
     private ArrayList<String> populateTips(){
         ArrayList<String> tipList = new ArrayList<>();
 
@@ -128,12 +139,25 @@ public class Bed extends RoomObject implements Runnable{
         return tipList;
     }
 
+    /**
+     * Gives a random tip.
+     * 
+     * @return returns a random tip
+     */
     private String getRandTip(){
         Random rand = new Random();
 
         return tips.get(rand.nextInt(tips.size()));
     }
 
+    /**
+     * Checks if the bed is clicked at the given mouse coordinates.
+     * 
+     * @param mouseX  x point of mouse
+     * @param mouseY  y point of mouse
+     * @param cameraX x point of camera
+     * @return true if clicked, false otherwise
+     */
     public boolean isClicked(int mouseX, int mouseY, int cameraX){
         int screenX = x - cameraX;
 
