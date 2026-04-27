@@ -18,6 +18,12 @@ public class Clock extends RoomObject{
 
     private Image clockImage;
 
+    /**
+     * The constructor for the clock class.
+     * 
+     * @param x x coord
+     * @param y y coord
+     */
     public Clock(int x, int y) {
         super(x, y);
 
@@ -25,6 +31,12 @@ public class Clock extends RoomObject{
         clockImage = icon.getImage();
     }
 
+    /**
+     * Draws the clock on the screen.
+     * 
+     * @param g Graphics component
+     * @param cameraX the camera to draw in comparison to
+     */
     public void draw(Graphics g, int cameraX) {
         g.drawImage(clockImage, x - cameraX, y, width, height, null);
     }
