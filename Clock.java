@@ -1,7 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
 /**
  * Clock implementation for Pawffice, will be an interactable object that gives
