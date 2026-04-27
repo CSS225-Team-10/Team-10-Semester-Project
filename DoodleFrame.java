@@ -1,5 +1,6 @@
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -8,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+import javax.swing.plaf.BorderUIResource;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -38,6 +42,26 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
      */
     private JPanel panel;
 
+    /** 
+     * Dark green color for panel
+     */
+    private static Color darkGreen = new Color(52,88,48);
+
+    /**
+     * Light green color for panel
+     */
+    private static Color lightGreen = new Color(182, 204, 161);
+
+    /**
+     * Light lavender color for panel
+     */
+    private static Color lightLavender = new Color(233, 214, 236);
+
+    /**
+     * Coffee color for panel
+     */
+    private static Color coffee = new Color(37, 22, 5);
+
     private ArrayList<Line> currentStroke = new ArrayList<>();
 
     /**
@@ -53,11 +77,17 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
 
         // button to clear frame
         JButton clearButton = new JButton("Clear");
+        clearButton.setBackground(darkGreen);
 
         // button to undo
         JButton undoButton = new JButton("Undo");
+        clearButton.setBackground(darkGreen);
+
+        Border border = BorderFactory.createLineBorder(coffee, 1);
 
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(lightGreen);
+        buttonPanel.setBorder(border);
         buttonPanel.add(clearButton);
         buttonPanel.add(undoButton);
 
@@ -69,7 +99,8 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
             }
         };
 
-        panel.setBackground(java.awt.Color.WHITE);
+        panel.setBackground(lightLavender);
+        panel.setBorder(border);
 
         panel.addMouseListener(this);
         panel.addMouseMotionListener(this);
@@ -100,6 +131,7 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
      * Draw all saved lines.
      */
     private void redraw(Graphics g) {
+        g.setColor(coffee);
         for (ArrayList<Line> stroke : strokes) {
             for (Line line : stroke) {
                 g.drawLine(line.p1.x, line.p1.y, line.p2.x, line.p2.y);
