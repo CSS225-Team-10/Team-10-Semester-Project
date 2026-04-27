@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  * @version Spring, 2026
  */
 
-public class Bone extends RoomObject implements Runnable {
+public class Bone extends RoomObject {
     /**
      * Instance variables
      */
@@ -62,10 +62,10 @@ public class Bone extends RoomObject implements Runnable {
      * @param cameraX the camera to draw in comparison to
      */
     public void draw(Graphics g, int cameraX) {
-        g.fillOval(x - cameraX - width/2 - 2, y - height/2 - 2, 4, 4);
+        /**g.fillOval(x - cameraX - width/2 - 2, y - height/2 - 2, 4, 4);
         g.fillOval(x - cameraX + width/2 - 2, y - height/2 - 2, 4, 4);
         g.fillOval(x - cameraX - width/2 - 2, y + height/2 - 2, 4, 4);
-        g.fillOval(x - cameraX + width/2 - 2, y + height/2 - 2, 4, 4);
+        g.fillOval(x - cameraX + width/2 - 2, y + height/2 - 2, 4, 4);**/
 
         g.drawImage(boneImage, x - cameraX - width/2, y - height/2, width, height, null);
     }
@@ -98,13 +98,6 @@ public class Bone extends RoomObject implements Runnable {
             x = mouseX;
             y = mouseY;
         }
-    }
-
-    /**
-     * Runs the bone's behavior in a separate thread.
-     */
-    @Override
-    public void run() {
     }
 
     /**
