@@ -37,6 +37,13 @@ public class User {
     
     private boolean isClickedState = false;
 
+    /**
+     * The constructor for the user
+     * 
+     * @param x x coord
+     * @param y y coord
+     * @param worldWidth width of the world
+     */
     public User(int x, int y, int worldWidth) {
         this.x = x;
         this.y = y;
@@ -52,12 +59,22 @@ public class User {
     static final int ANIMATION_RATE = 400;
 
     ActionListener change = new ActionListener() {
+        /**
+         * Actionperformed method
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             frame = (frame + 1) % 2;
         }
     };
 
+    /**
+     * This is a timer when clicked to allow for the heart animation for baloo!
+     * 
+     * @param mouseX x point of mouse
+     * @param mouseY y point of mouse
+     * @param cameraX x point of camera
+     */
     public void clicked(int mouseX, int mouseY, int cameraX) {
         if (isClicked(mouseX, mouseY, cameraX)) {
             isClickedState = true;
@@ -75,6 +92,9 @@ public class User {
         }
     }
 
+    /**
+     * Updates the user's position and animation frame based on movement and click state.
+     */
     public void update() {
         // if moving left, subtract from speed
         if (movingLeft) {
@@ -128,6 +148,12 @@ public class User {
 
     }
 
+    /**
+     * Draws the user on the screen.
+     * 
+     * @param g Graphics component
+     * @param cameraX the camera to draw in comparison to
+     */
     public void draw(Graphics g, int cameraX) {
         if (userImage != null) {
             g.drawImage(userImage, x - cameraX, 175, width, height, null);
@@ -137,6 +163,11 @@ public class User {
         }
     }
 
+    /**
+     * Method to check if checked and set movingleft.
+     * 
+     * @param movingLeft if moving left
+     */
     public void setMovingLeft(boolean movingLeft) {
         if (isClickedState) {
             this.movingLeft = false;
@@ -145,6 +176,11 @@ public class User {
         this.movingLeft = movingLeft;
     }
 
+    /**
+     * Method to check if checked and set movingright.
+     * 
+     * @param movingRight if moving right
+     */
     public void setMovingRight(boolean movingRight) {
         if (isClickedState) {
             this.movingRight = false;
@@ -153,18 +189,41 @@ public class User {
         this.movingRight = movingRight;
     }
 
+    /**
+     * Returns the x coordinate.
+     * 
+     * @return the x coord
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Returns the y coordinate.
+     * 
+     * @return the y coord
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Returns the width.
+     * 
+     * @return the width
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Checks if the dog is clicked at the given mouse coordinates.
+     * 
+     * @param mouseX  x point of mouse
+     * @param mouseY  y point of mouse
+     * @param cameraX x point of camera
+     * @return true if clicked, false otherwise
+     */
     public boolean isClicked(int mouseX, int mouseY, int cameraX) {
         int screenX = x - cameraX;
         return mouseX >= screenX && mouseX <= screenX + width && mouseY >= y && mouseY <= y + height;
