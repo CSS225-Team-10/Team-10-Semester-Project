@@ -44,7 +44,7 @@ public class Bone extends RoomObject implements Runnable {
      * @param mouseX  x point of mouse
      * @param mouseY  y point of mouse
      * @param cameraX x point of camera
-     * @return
+     * @return true if clicked, false otherwise
      */
     public boolean isClicked(int mouseX, int mouseY, int cameraX) {
         int screenXLeft = x - cameraX - width/2;
@@ -58,7 +58,7 @@ public class Bone extends RoomObject implements Runnable {
     /**
      * Draws the bone on the screen.
      * 
-     * @param g       Graphics component
+     * @param g Graphics component
      * @param cameraX the camera to draw in comparison to
      */
     public void draw(Graphics g, int cameraX) {
@@ -90,8 +90,8 @@ public class Bone extends RoomObject implements Runnable {
     /**
      * Drags the bone if the bone is clicked!
      * 
-     * @param mouseX
-     * @param mouseY
+     * @param mouseX x point of mouse
+     * @param mouseY y point of mouse
      */
     public void dragBone(int mouseX, int mouseY) {
         if (isClicked) {
