@@ -86,7 +86,6 @@ public class PawfficeMain implements Runnable {
                 bed.draw(g, cameraX);
                 bookshelf.draw(g, cameraX);
                 desk.draw(g, cameraX);
-                bone.draw(g, cameraX);
                 g.drawImage(CHAIR_IMAGE.getImage(), 178 - cameraX, 190, 136, 177, null);
 
                 // System.out.println("Camera X: " + cameraX);
@@ -97,6 +96,7 @@ public class PawfficeMain implements Runnable {
                 g.fillRect(WORLD_WIDTH - cameraX - 8, 0, 8, getHeight());
 
                 user.draw(g, cameraX);
+                bone.draw(g, cameraX);
                 //g.drawImage(SHADOWS_IMAGE.getImage(), 182 - cameraX, 63, 404, 245, null);
             }
         };
@@ -133,7 +133,7 @@ public class PawfficeMain implements Runnable {
         panel.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                int mouseX = e.getX();
+                int mouseX = e.getX() + cameraX;
                 int mouseY = e.getY();
 
                 bone.dragBone(mouseX, mouseY);

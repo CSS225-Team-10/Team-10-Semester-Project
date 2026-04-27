@@ -47,10 +47,12 @@ public class Bone extends RoomObject implements Runnable {
      * @return
      */
     public boolean isClicked(int mouseX, int mouseY, int cameraX) {
-        int screenX = x - cameraX;
-        int screenY = y;
+        int screenXLeft = x - cameraX - width/2;
+        int screenXRight = x - cameraX + width/2;
+        int screenYTop = y - height/2;
+        int screenYBottom = y + height/2;
 
-        return mouseX >= screenX && mouseX <= screenX + width && mouseY >= screenY && mouseY <= screenY + height;
+        return mouseX >= screenXLeft && mouseX <= screenXRight && mouseY >= screenYTop && mouseY <= screenYBottom;
     }
 
     /**
@@ -60,11 +62,20 @@ public class Bone extends RoomObject implements Runnable {
      * @param cameraX the camera to draw in comparison to
      */
     public void draw(Graphics g, int cameraX) {
-        g.drawImage(boneImage, x - cameraX, y, width, height, null);
+        g.fillOval(x - cameraX - width/2 - 2, y - height/2 - 2, 4, 4);
+        g.fillOval(x - cameraX + width/2 - 2, y - height/2 - 2, 4, 4);
+        g.fillOval(x - cameraX - width/2 - 2, y + height/2 - 2, 4, 4);
+        g.fillOval(x - cameraX + width/2 - 2, y + height/2 - 2, 4, 4);
+
+        g.drawImage(boneImage, x - cameraX - width/2, y - height/2, width, height, null);
     }
 
+    /**
+     * Method to set the isClicked instance variable to true.
+     * 
+     */
     public void clicked() {
-        isClicked = !isClicked;
+        isClicked = true;
     }
 
     /**
@@ -86,7 +97,6 @@ public class Bone extends RoomObject implements Runnable {
         if (isClicked) {
             x = mouseX;
             y = mouseY;
-        } else {
         }
     }
 
@@ -95,7 +105,6 @@ public class Bone extends RoomObject implements Runnable {
      */
     @Override
     public void run() {
-
     }
 
     /**
