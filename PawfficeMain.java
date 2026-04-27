@@ -75,6 +75,11 @@ public class PawfficeMain implements Runnable {
         }
 
         panel = new JPanel() {
+            /**
+             * Draws everything in a graphics sense
+             * 
+             * @param g graphics component
+             */
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -102,6 +107,11 @@ public class PawfficeMain implements Runnable {
         };
 
         panel.addMouseListener(new MouseAdapter() {
+            /**
+             * Checks if each thing has been clicked on, if they have launches them.
+             * 
+             * @param e the mouseEvent input
+             */
             @Override
             public void mousePressed(MouseEvent e) {
                 int mouseX = e.getX();
@@ -131,6 +141,11 @@ public class PawfficeMain implements Runnable {
         });
 
         panel.addMouseMotionListener(new MouseMotionAdapter() {
+            /**
+             * This is for if the mouse has been dragged, specifically for the bone class.
+             * 
+             * @param e mouseEvent input
+             */
             @Override
             public void mouseDragged(MouseEvent e) {
                 int mouseX = e.getX() + cameraX;
@@ -155,6 +170,11 @@ public class PawfficeMain implements Runnable {
             // WHEN I CREATED A MINI GAME FOR MYSELF SO I RESEARCHED ON MY OWN TIME :)
 
             // checks which key is pressed
+            /**
+             * Checks if the right or left arrows are pressed, if they are sets movingLeft or movingRight.
+             * 
+             * @param e checks which key is pressed
+             */
             public void keyPressed(KeyEvent e) {
                 // if key is left arrow, movingLeft boolean is set true
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -167,6 +187,11 @@ public class PawfficeMain implements Runnable {
             }
 
             // checks which key is released
+            /**
+             * Checks if the right or left arrows are released, if they are sets movingLeft or movingRight to false.
+             * 
+             * @param e checks which key is released
+             */
             public void keyReleased(KeyEvent e) {
                 // if key is left arrow, movingLeft boolean is set false
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
