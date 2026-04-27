@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  * @version Spring, 2026
  */
 
-public class Bone extends RoomObject {
+public class Bone extends RoomObject implements Runnable {
     /**
      * Instance variables
      */
@@ -98,6 +98,13 @@ public class Bone extends RoomObject {
             x = mouseX;
             y = mouseY;
         }
+    }
+
+    /**
+     * Runs the bone's behavior in a separate thread.
+     */
+    @Override
+    public void run() {
     }
 
     /**
