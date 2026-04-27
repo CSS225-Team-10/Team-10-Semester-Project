@@ -148,7 +148,7 @@ public class PawfficeMain implements Runnable {
         clock = new Clock(20, 10);
         bed = new Bed(586, 115);
         desk = new Desk(178, 140);
-        bone = new Bone(300, 200);
+        bone = new Bone(462, 73);
         frame.addKeyListener(new KeyAdapter() {
 
             // THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
