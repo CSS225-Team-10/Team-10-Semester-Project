@@ -16,15 +16,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
-public class NotesFrame implements Runnable{
-    //right now only one copy of notes... with web dev
-    //stuff i will prolly want to make it so you can
-    //have a lot of different files to save your notes
-    //in.
+public class NotesFrame implements Runnable {
+    // right now only one copy of notes... with web dev
+    // stuff i will prolly want to make it so you can
+    // have a lot of different files to save your notes
+    // in.
     private static String savedNotes = "";
 
     @Override
-    public void run(){
+    public void run() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Desk Notes");
         frame.setPreferredSize(new Dimension(300, 300));
@@ -41,9 +41,9 @@ public class NotesFrame implements Runnable{
 
         JButton saveButton = new JButton("Save Notes");
 
-        saveButton.addActionListener(new ActionListener(){
+        saveButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 savedNotes = textArea.getText();
             }
         });

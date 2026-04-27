@@ -20,7 +20,6 @@ public class Bone extends RoomObject implements Runnable {
     private int width = 40;
     private int height = 40;
 
-
     private Image boneImage;
 
     /**
@@ -47,10 +46,10 @@ public class Bone extends RoomObject implements Runnable {
      * @return true if clicked, false otherwise
      */
     public boolean isClicked(int mouseX, int mouseY, int cameraX) {
-        int screenXLeft = x - cameraX - width/2;
-        int screenXRight = x - cameraX + width/2;
-        int screenYTop = y - height/2;
-        int screenYBottom = y + height/2;
+        int screenXLeft = x - cameraX - width / 2;
+        int screenXRight = x - cameraX + width / 2;
+        int screenYTop = y - height / 2;
+        int screenYBottom = y + height / 2;
 
         return mouseX >= screenXLeft && mouseX <= screenXRight && mouseY >= screenYTop && mouseY <= screenYBottom;
     }
@@ -58,16 +57,18 @@ public class Bone extends RoomObject implements Runnable {
     /**
      * Draws the bone on the screen.
      * 
-     * @param g Graphics component
+     * @param g       Graphics component
      * @param cameraX the camera to draw in comparison to
      */
     public void draw(Graphics g, int cameraX) {
-        /**g.fillOval(x - cameraX - width/2 - 2, y - height/2 - 2, 4, 4);
-        g.fillOval(x - cameraX + width/2 - 2, y - height/2 - 2, 4, 4);
-        g.fillOval(x - cameraX - width/2 - 2, y + height/2 - 2, 4, 4);
-        g.fillOval(x - cameraX + width/2 - 2, y + height/2 - 2, 4, 4);**/
+        /**
+         * g.fillOval(x - cameraX - width/2 - 2, y - height/2 - 2, 4, 4);
+         * g.fillOval(x - cameraX + width/2 - 2, y - height/2 - 2, 4, 4);
+         * g.fillOval(x - cameraX - width/2 - 2, y + height/2 - 2, 4, 4);
+         * g.fillOval(x - cameraX + width/2 - 2, y + height/2 - 2, 4, 4);
+         **/
 
-        g.drawImage(boneImage, x - cameraX - width/2, y - height/2, width, height, null);
+        g.drawImage(boneImage, x - cameraX - width / 2, y - height / 2, width, height, null);
     }
 
     /**

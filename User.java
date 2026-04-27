@@ -34,14 +34,14 @@ public class User {
     private int worldWidth;
 
     private Image userImage;
-    
+
     private boolean isClickedState = false;
 
     /**
      * The constructor for the user
      * 
-     * @param x x coord
-     * @param y y coord
+     * @param x          x coord
+     * @param y          y coord
      * @param worldWidth width of the world
      */
     public User(int x, int y, int worldWidth) {
@@ -71,8 +71,8 @@ public class User {
     /**
      * This is a timer when clicked to allow for the heart animation for baloo!
      * 
-     * @param mouseX x point of mouse
-     * @param mouseY y point of mouse
+     * @param mouseX  x point of mouse
+     * @param mouseY  y point of mouse
      * @param cameraX x point of camera
      */
     public void clicked(int mouseX, int mouseY, int cameraX) {
@@ -93,7 +93,8 @@ public class User {
     }
 
     /**
-     * Updates the user's position and animation frame based on movement and click state.
+     * Updates the user's position and animation frame based on movement and click
+     * state.
      */
     public void update() {
         // if moving left, subtract from speed
@@ -128,7 +129,7 @@ public class User {
 
         if (isClickedState) {
             userImage = new ImageIcon("Images/heart-Sprite.png").getImage();
-            return; 
+            return;
         }
 
         if (movingRight && movingLeft) {
@@ -145,13 +146,12 @@ public class User {
             x = worldWidth - width;
         }
 
-
     }
 
     /**
      * Draws the user on the screen.
      * 
-     * @param g Graphics component
+     * @param g       Graphics component
      * @param cameraX the camera to draw in comparison to
      */
     public void draw(Graphics g, int cameraX) {
@@ -171,7 +171,7 @@ public class User {
     public void setMovingLeft(boolean movingLeft) {
         if (isClickedState) {
             this.movingLeft = false;
-            return; 
+            return;
         }
         this.movingLeft = movingLeft;
     }
@@ -184,7 +184,7 @@ public class User {
     public void setMovingRight(boolean movingRight) {
         if (isClickedState) {
             this.movingRight = false;
-            return; 
+            return;
         }
         this.movingRight = movingRight;
     }

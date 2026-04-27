@@ -4,14 +4,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
- * Clock implementation for Pawffice, will be an interactable object that gives the user
+ * Clock implementation for Pawffice, will be an interactable object that gives
+ * the user
  * the ability to set a pomodoro timer.
  * 
  * @author Team 10, the Bug Busters
  * @version Spring, 2026
  */
 
-public class Clock extends RoomObject{
+public class Clock extends RoomObject {
 
     private int width = 128;
     private int height = 128;
@@ -34,36 +35,34 @@ public class Clock extends RoomObject{
     /**
      * Draws the clock on the screen.
      * 
-     * @param g Graphics component
+     * @param g       Graphics component
      * @param cameraX the camera to draw in comparison to
      */
     public void draw(Graphics g, int cameraX) {
         g.drawImage(clockImage, x - cameraX, y, width, height, null);
     }
 
-
     /**
      * Checks if the clock has been clicked based on mouse coordinates.
      *
-     * @param mouseX The x-coordinate of the mouse
-     * @param mouseY The y-coordinate of the mouse
+     * @param mouseX  The x-coordinate of the mouse
+     * @param mouseY  The y-coordinate of the mouse
      * @param cameraX The x-coordinate of the camera
      * @return true if the clock is clicked, false otherwise
      */
     @Override
-    public boolean isClicked(int mouseX, int mouseY, int cameraX){
+    public boolean isClicked(int mouseX, int mouseY, int cameraX) {
         int screenX = x - cameraX;
 
         return mouseX >= screenX && mouseX <= screenX + width
-            && mouseY >= y && mouseY <= y + height;
+                && mouseY >= y && mouseY <= y + height;
     }
-
 
     /**
      * The main method is responsible for creating a thread that will construct
      * and show the graphical user interface.
      */
-    public void launch(){
+    public void launch() {
         new TimerFrame().setVisible(true);
     }
 }

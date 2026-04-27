@@ -7,7 +7,8 @@ import javax.swing.*;
  * A simple Pomodoro timer. User enters work minutes and break minutes. Timer
  * counts down work time, then break time.
  * 
- * I watched a YouTube video by Winston Lievsay and altered it to implement this as pomodoro.
+ * I watched a YouTube video by Winston Lievsay and altered it to implement this
+ * as pomodoro.
  * 
  * work needs to be done on formatting and making it more intuitive
  * 
@@ -15,30 +16,30 @@ import javax.swing.*;
  * @author Team 10
  * @version April 2026
  */
-public class TimerFrame extends JFrame implements Runnable{
+public class TimerFrame extends JFrame implements Runnable {
 
-    //labels for user to enter time requested for work and break
+    // labels for user to enter time requested for work and break
     private JLabel workLabel, breakLabel, timerLabel, sessionLabel;
 
-    //time left in seconds
+    // time left in seconds
     private int counter;
 
-    //work seconds
+    // work seconds
     private int workSeconds;
 
-    //break seconds
+    // break seconds
     private int breakSeconds;
 
-    //text field to enter value for work time and break time
+    // text field to enter value for work time and break time
     private JTextField workField, breakField;
 
-    //buttons to start, stop and reset timers
+    // buttons to start, stop and reset timers
     private JButton startButton, stopButton, resetButton;
 
-    //timer
+    // timer
     private Timer timer;
 
-    //check if in work session or break
+    // check if in work session or break
     private boolean isWorkSession;
 
     /**
@@ -77,30 +78,30 @@ public class TimerFrame extends JFrame implements Runnable{
 
         add(buttonPanel);
 
-        //timer runs every second
+        // timer runs every second
         timer = new Timer(1000, new TimeClass());
 
-        startButton.addActionListener(new ActionListener(){
+        startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 startTimer();
             }
         });
-        stopButton.addActionListener(new ActionListener(){
+        stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop();
             }
         });
-        resetButton.addActionListener(new ActionListener(){
+        resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resetTimer();
             }
         });
     }
-    
-    //start button 
+
+    // start button
     private void startTimer() {
         int workMinutes = Integer.parseInt(workField.getText());
         int breakMinutes = Integer.parseInt(breakField.getText());
@@ -117,7 +118,7 @@ public class TimerFrame extends JFrame implements Runnable{
         timer.start();
     }
 
-    //reset button 
+    // reset button
     public void resetTimer() {
         timer.stop();
         counter = 0;
@@ -151,7 +152,7 @@ public class TimerFrame extends JFrame implements Runnable{
         }
     }
 
-    //helper method to display MM:SS
+    // helper method to display MM:SS
     private String formatTime(int totalSeconds) {
         int minutes = totalSeconds / 60;
         int seconds = totalSeconds % 60;
@@ -171,7 +172,7 @@ public class TimerFrame extends JFrame implements Runnable{
     }
 
     @Override
-    public void run(){
+    public void run() {
         setVisible(true);
     }
 

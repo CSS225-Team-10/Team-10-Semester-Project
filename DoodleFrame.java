@@ -84,7 +84,7 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
         undoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (!strokes.isEmpty()) {
-                    strokes.remove(strokes.size()-1);
+                    strokes.remove(strokes.size() - 1);
                     panel.repaint();
                 }
             }
@@ -107,10 +107,10 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
         }
 
         if (currentStroke != null) {
-        for (Line line : currentStroke) {
-            g.drawLine(line.p1.x, line.p1.y, line.p2.x, line.p2.y);
+            for (Line line : currentStroke) {
+                g.drawLine(line.p1.x, line.p1.y, line.p2.x, line.p2.y);
+            }
         }
-    }
     }
 
     /**
@@ -148,11 +148,10 @@ public class DoodleFrame extends MouseAdapter implements Runnable {
     @Override
     public void mouseReleased(MouseEvent e) {
         if (currentStroke != null && !currentStroke.isEmpty()) {
-            strokes.add(currentStroke); 
+            strokes.add(currentStroke);
             currentStroke = null;
         }
     }
-
 
     /**
      * Simple inner class to store a line.

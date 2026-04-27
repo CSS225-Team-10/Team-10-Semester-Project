@@ -41,15 +41,15 @@ public class PawfficeMain implements Runnable {
     // desk
     private Desk desk;
 
-    //bone
+    // bone
     private Bone bone;
 
     // images that go straight on the frame, not interactable objects :D
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
     private static final ImageIcon CHAIR_IMAGE = new ImageIcon("Images/chair.png");
-    //private static final ImageIcon SHADOWS_IMAGE = new ImageIcon("Images/shadows.png");
-
+    // private static final ImageIcon SHADOWS_IMAGE = new
+    // ImageIcon("Images/shadows.png");
 
     // Panel for our GUI.
     private JPanel panel;
@@ -102,7 +102,7 @@ public class PawfficeMain implements Runnable {
 
                 user.draw(g, cameraX);
                 bone.draw(g, cameraX);
-                //g.drawImage(SHADOWS_IMAGE.getImage(), 182 - cameraX, 63, 404, 245, null);
+                // g.drawImage(SHADOWS_IMAGE.getImage(), 182 - cameraX, 63, 404, 245, null);
             }
         };
 
@@ -171,7 +171,8 @@ public class PawfficeMain implements Runnable {
 
             // checks which key is pressed
             /**
-             * Checks if the right or left arrows are pressed, if they are sets movingLeft or movingRight.
+             * Checks if the right or left arrows are pressed, if they are sets movingLeft
+             * or movingRight.
              * 
              * @param e checks which key is pressed
              */
@@ -188,7 +189,8 @@ public class PawfficeMain implements Runnable {
 
             // checks which key is released
             /**
-             * Checks if the right or left arrows are released, if they are sets movingLeft or movingRight to false.
+             * Checks if the right or left arrows are released, if they are sets movingLeft
+             * or movingRight to false.
              * 
              * @param e checks which key is released
              */
@@ -210,7 +212,6 @@ public class PawfficeMain implements Runnable {
             panel.repaint();
             updateCamera();
             user.update();
-
 
             try {
                 // this represents the games fps!!!
