@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
 
 /**
  * Creates the actual panel for the user to interact with, still needs all the
@@ -39,12 +40,15 @@ public class PawfficeMain implements Runnable {
     // desk
     private Desk desk;
 
+    // bone
+    private Bone bone;
+
     // images that go straight on the frame, not interactable objects :D
     private static final ImageIcon BACKGROUND_IMAGE = new ImageIcon("Images/background.png");
     private static final ImageIcon CARPET_IMAGE = new ImageIcon("Images/carpet.png");
     private static final ImageIcon CHAIR_IMAGE = new ImageIcon("Images/chair.png");
-    //private static final ImageIcon SHADOWS_IMAGE = new ImageIcon("Images/shadows.png");
-
+    // private static final ImageIcon SHADOWS_IMAGE = new
+    // ImageIcon("Images/shadows.png");
 
     // Panel for our GUI.
     private JPanel panel;
@@ -70,6 +74,11 @@ public class PawfficeMain implements Runnable {
         }
 
         panel = new JPanel() {
+            /**
+             * Draws everything in a graphics sense
+             * 
+             * @param g graphics component
+             */
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -91,15 +100,26 @@ public class PawfficeMain implements Runnable {
                 g.fillRect(WORLD_WIDTH - cameraX - 8, 0, 8, getHeight());
 
                 user.draw(g, cameraX);
-                //g.drawImage(SHADOWS_IMAGE.getImage(), 182 - cameraX, 63, 404, 245, null);
+                bone.draw(g, cameraX);
+                // g.drawImage(SHADOWS_IMAGE.getImage(), 182 - cameraX, 63, 404, 245, null);
             }
         };
 
         panel.addMouseListener(new MouseAdapter() {
+            /**
+             * Checks if each thing has been clicked on, if they have launches them.
+             * 
+             * @param e the mouseEvent input
+             */
             @Override
             public void mousePressed(MouseEvent e) {
                 int mouseX = e.getX();
                 int mouseY = e.getY();
+
+                if (bone.isClicked(mouseX, mouseY, cameraX)) {
+                    bone.clicked();
+                    return;
+                }
 
                 if (bed.isClicked(mouseX, mouseY, cameraX)) {
                     javax.swing.SwingUtilities.invokeLater(bed);
@@ -119,6 +139,21 @@ public class PawfficeMain implements Runnable {
             }
         });
 
+        panel.addMouseMotionListener(new MouseMotionAdapter() {
+            /**
+             * This is for if the mouse has been dragged, specifically for the bone class.
+             * 
+             * @param e mouseEvent input
+             */
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                int mouseX = e.getX() + cameraX;
+                int mouseY = e.getY();
+
+                bone.dragBone(mouseX, mouseY);
+            }
+        });
+
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -127,12 +162,19 @@ public class PawfficeMain implements Runnable {
         clock = new Clock(20, 10);
         bed = new Bed(586, 115);
         desk = new Desk(178, 140);
+        bone = new Bone(462, 73);
         frame.addKeyListener(new KeyAdapter() {
 
             // THE CODE BELOW IS BY BLUE!! I HAVE DONE CODE LIKE THIS PREVIOUSLY
             // WHEN I CREATED A MINI GAME FOR MYSELF SO I RESEARCHED ON MY OWN TIME :)
 
             // checks which key is pressed
+            /**
+             * Checks if the right or left arrows are pressed, if they are sets movingLeft
+             * or movingRight.
+             * 
+             * @param e checks which key is pressed
+             */
             public void keyPressed(KeyEvent e) {
                 // if key is left arrow, movingLeft boolean is set true
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -145,6 +187,12 @@ public class PawfficeMain implements Runnable {
             }
 
             // checks which key is released
+            /**
+             * Checks if the right or left arrows are released, if they are sets movingLeft
+             * or movingRight to false.
+             * 
+             * @param e checks which key is released
+             */
             public void keyReleased(KeyEvent e) {
                 // if key is left arrow, movingLeft boolean is set false
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {

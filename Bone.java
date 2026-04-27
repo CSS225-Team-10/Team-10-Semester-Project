@@ -2,7 +2,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-
 /**
  * Interactable bone, can be picked up, Baloo will follow and the bone will drop
  * after being unclicked.
@@ -44,31 +43,69 @@ public class Bone extends RoomObject implements Runnable {
      * @param mouseX  x point of mouse
      * @param mouseY  y point of mouse
      * @param cameraX x point of camera
-     * @return
+     * @return true if clicked, false otherwise
      */
     public boolean isClicked(int mouseX, int mouseY, int cameraX) {
-        int screenX = x - cameraX;
-        int screenY = y;
+        int screenXLeft = x - cameraX - width / 2;
+        int screenXRight = x - cameraX + width / 2;
+        int screenYTop = y - height / 2;
+        int screenYBottom = y + height / 2;
 
-        return mouseX >= screenX && mouseX <= screenX + width && mouseY >= screenY && mouseY <= screenY + height;
+        return mouseX >= screenXLeft && mouseX <= screenXRight && mouseY >= screenYTop && mouseY <= screenYBottom;
     }
 
     /**
      * Draws the bone on the screen.
      * 
-     * @param g Graphics component
+     * @param g       Graphics component
      * @param cameraX the camera to draw in comparison to
      */
     public void draw(Graphics g, int cameraX) {
-        g.drawImage(boneImage, x - cameraX, y, width, height, null);
+        /**
+         * g.fillOval(x - cameraX - width/2 - 2, y - height/2 - 2, 4, 4);
+         * g.fillOval(x - cameraX + width/2 - 2, y - height/2 - 2, 4, 4);
+         * g.fillOval(x - cameraX - width/2 - 2, y + height/2 - 2, 4, 4);
+         * g.fillOval(x - cameraX + width/2 - 2, y + height/2 - 2, 4, 4);
+         **/
+
+        g.drawImage(boneImage, x - cameraX - width / 2, y - height / 2, width, height, null);
     }
 
     /**
+     * Method to set the isClicked instance variable to true.
      * 
      */
-    @Override
-    public void run(){
+    public void clicked() {
+        isClicked = true;
+    }
 
+    /**
+     * Sets the clicked state of the bone.
+     * 
+     * @param clicked the new clicked state of the bone :P
+     */
+    public void setClicked(boolean clicked) {
+        isClicked = clicked;
+    }
+
+    /**
+     * Drags the bone if the bone is clicked!
+     * 
+     * @param mouseX x point of mouse
+     * @param mouseY y point of mouse
+     */
+    public void dragBone(int mouseX, int mouseY) {
+        if (isClicked) {
+            x = mouseX;
+            y = mouseY;
+        }
+    }
+
+    /**
+     * Runs the bone's behavior in a separate thread.
+     */
+    @Override
+    public void run() {
     }
 
     /**
