@@ -1,7 +1,13 @@
+//package maybe add?
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -32,6 +38,9 @@ public class NotesFrame implements Runnable {
         frame.setLayout(new BorderLayout());
 
         JTextArea textArea = new JTextArea();
+
+        //GET INSTEAD OF SAVEDNOTES HERE
+
         textArea.setText(savedNotes);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -45,6 +54,23 @@ public class NotesFrame implements Runnable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 savedNotes = textArea.getText();
+
+                try {
+                    String jsonBody = "{\"notes\": \""+ savedNotes +"\"}";
+
+                    HttpClient client = HttpClient.newHttpClient();
+                    HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create("https://wise-dog-96.webhook.cool"))
+                        .header("Content-Type", "application/json")
+                        .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
+                        .build();
+
+                    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                    System.out.println(response.body());
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                    System.err.println(ex);
+                }
             }
         });
 
