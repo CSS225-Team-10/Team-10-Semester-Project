@@ -3,6 +3,10 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 /**
  * This class should make a simple http server stores
@@ -21,10 +25,11 @@ public class NotesServer {
         // https://docs.oracle.com/en/java/javase/23/docs/api/jdk.httpserver/com/sun/net/httpserver/HttpServer.html
         // InetSocket adress is standard to define IP address abd port number
         // for java servers.
-        InetSocketAddress address = new InetSocketAddress(8080);
-        HttpServer server = HttpServer.create(address, 0);
+        //InetSocketAddress address = new InetSocketAddress(8080);
+        //HttpServer server = HttpServer.create(address, 0);
 
-        server.start();
-        System.out.println("Server started on port 8080");
+        //server.start();
+        //System.out.println("Server started on port 8080");
+
     }
 }
