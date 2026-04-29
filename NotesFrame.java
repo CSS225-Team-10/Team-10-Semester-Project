@@ -41,7 +41,23 @@ public class NotesFrame implements Runnable {
 
         //GET INSTEAD OF SAVEDNOTES HERE
 
-        textArea.setText(savedNotes);
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/savedNotes"))
+                .GET()
+                .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            String body = response.body();
+            String notes = body.split(":\"")[1].replace("\"}", "");
+
+            textArea.setText(notes);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setEditable(true);
@@ -56,11 +72,12 @@ public class NotesFrame implements Runnable {
                 savedNotes = textArea.getText();
 
                 try {
-                    String jsonBody = "{\"notes\": \""+ savedNotes +"\"}";
+                    String safeNotes = savedNotes.replace("\"", "\\\"");
+                    String jsonBody = "{\"notes\": \"" + safeNotes + "\"}";
 
                     HttpClient client = HttpClient.newHttpClient();
                     HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create("https://wise-dog-96.webhook.cool"))
+                        .uri(URI.create("http://localhost:3000/savedNotes"))
                         .header("Content-Type", "application/json")
                         .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
                         .build();
@@ -68,7 +85,6 @@ public class NotesFrame implements Runnable {
                     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
                     System.out.println(response.body());
                 } catch (Exception ex) {
-                    System.out.println(ex);
                     System.err.println(ex);
                 }
             }
