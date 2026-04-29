@@ -77,7 +77,7 @@ public class NotesFrame implements Runnable {
 
                     HttpClient client = HttpClient.newHttpClient();
                     HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create("http://localhost:3000/savedNotes"))
+                        .uri(URI.create("http://localhost:8080/savedNotes"))
                         .header("Content-Type", "application/json")
                         .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
                         .build();
