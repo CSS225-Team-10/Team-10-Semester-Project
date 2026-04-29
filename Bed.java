@@ -1,20 +1,21 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.border.Border;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.Border;
 
 /**
  * Mental health tip screen for Pawwfice
@@ -36,6 +37,27 @@ public class Bed extends RoomObject implements Runnable {
     private int height = 262;
 
     private Image bedImage;
+    
+    /**
+     * Dark green color for panel
+     */
+    private static Color darkGreen = new Color(52, 88, 48);
+
+    /**
+     * Light green color for panel
+     */
+    private static Color lightGreen = new Color(182, 204, 161);
+
+    /**
+     * Light lavender color for panel
+     */
+    private static Color lightLavender = new Color(233, 214, 236);
+
+    /**
+     * Coffee color for panel
+     */
+    private static Color coffee = new Color(37, 22, 5);
+
 
     /**
      * Constructor for the bed, will be an interactable object that gives the user
@@ -78,6 +100,7 @@ public class Bed extends RoomObject implements Runnable {
         frame.add(label, BorderLayout.NORTH);
 
         newTipButton = new JButton("Click for a new Tip");
+        newTipButton.setBackground(darkGreen);
         newTipButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 tipArea.setText(getRandTip());
@@ -86,6 +109,7 @@ public class Bed extends RoomObject implements Runnable {
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(newTipButton);
+        buttonPanel.setBackground(lightGreen);
 
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -93,10 +117,11 @@ public class Bed extends RoomObject implements Runnable {
         tipArea.setLineWrap(true);
         tipArea.setWrapStyleWord(true);
         tipArea.setEditable(false);
+        tipArea.setBackground(lightLavender);
 
         JScrollPane scrollPane = new JScrollPane(tipArea);
 
-        Border padding = BorderFactory.createEmptyBorder(10, 15, 10, 15);
+        Border padding = BorderFactory.createLineBorder(coffee, 1);
         scrollPane.setBorder(padding);
 
         frame.add(scrollPane, BorderLayout.CENTER);
