@@ -116,12 +116,19 @@ public class Bone implements Runnable {
         if (!isClicked) {
             return;
         }
-        System.out.println("Bone is being dragged to: " + x + ", " + y);
+
         if (x < cameraX + width / 2) {
             x = cameraX + width / 2;
         }
         if (x + width > cameraX + PawfficeMain.FRAME_WIDTH) {
             x = cameraX + PawfficeMain.FRAME_WIDTH - width;
+        }
+
+        if (y < height / 2) {
+            y = height / 2;
+        }
+        if (y + height > PawfficeMain.FRAME_HEIGHT) {
+            y = PawfficeMain.FRAME_HEIGHT - height;
         }
 
     }

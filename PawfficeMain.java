@@ -22,9 +22,10 @@ import java.awt.event.MouseMotionAdapter;
  */
 
 public class PawfficeMain implements Runnable {
-    // a constant for the world width, no height needed i think
+    // a constant for the world width
     private final int WORLD_WIDTH = 750;
     public static final int FRAME_WIDTH = 600;
+    public static final int FRAME_HEIGHT = 400;
     // user
     private User user;
 
@@ -63,7 +64,7 @@ public class PawfficeMain implements Runnable {
     public void run() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Pawffice");
-        frame.setPreferredSize(new Dimension(FRAME_WIDTH, 400));
+        frame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
