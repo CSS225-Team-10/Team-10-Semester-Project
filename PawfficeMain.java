@@ -24,7 +24,7 @@ import java.awt.event.MouseMotionAdapter;
 public class PawfficeMain implements Runnable {
     // a constant for the world width, no height needed i think
     private final int WORLD_WIDTH = 750;
-    private final int FRAME_WIDTH = 600;
+    public static final int FRAME_WIDTH = 600;
     // user
     private User user;
 
@@ -211,6 +211,7 @@ public class PawfficeMain implements Runnable {
             panel.repaint();
             updateCamera();
             user.update();
+            bone.update(cameraX);
 
             try {
                 // this represents the games fps!!!

@@ -144,8 +144,7 @@ public class Bed extends RoomObject implements Runnable {
         tipList.add(
                 "If you are struggling to increase your positivity, one thing you can do is practice gratitude! What are some things you are grateful for?");
         tipList.add("Take a few deep breaths! You are allowed to take breaks. Everything will be okay.");
-        tipList.add(
-                "Take some time to practice Self Care! You can try journalling, taking a walk, breathing, and so many other things! Learn what works best for you.");
+        tipList.add("Take some time to practice Self Care! You can try journalling, taking a walk, breathing, and so many other things! Learn what works best for you.");
         tipList.add("Shoot for the moon, land amongst the stars.");
         tipList.add(
                 "Prioritize consistent sleep. This will also help your immune system function, enhance brain performance, memory, but most importantly emotional regulation. If you are feeling overwhelmed with tasks, one of the best things you can do is sleep so that you are better prepared to have the brainpower to complete those tasks! Stay happy and healthy and get some rest!");
