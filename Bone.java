@@ -113,6 +113,10 @@ public class Bone implements Runnable {
      * @param cameraX the x coordinate of the camera
      */
     public void update(int cameraX) {
+        if (!isClicked) {
+            return;
+        }
+        System.out.println("Bone is being dragged to: " + x + ", " + y);
         if (x < cameraX + width / 2) {
             x = cameraX + width / 2;
         }

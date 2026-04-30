@@ -137,6 +137,16 @@ public class PawfficeMain implements Runnable {
                     desk.launch();
                 }
             }
+
+            /**
+             * Checks if the bone has been released, if it has sets the bone's clicked state to false.
+             * 
+             * @param e the mouseEvent input
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                bone.setClicked(false);
+            }
         });
 
         panel.addMouseMotionListener(new MouseMotionAdapter() {
