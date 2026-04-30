@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.sound.midi.*;
 
 /**
  * A simple Pomodoro timer. User enters work minutes and break minutes. Timer
@@ -69,23 +70,22 @@ public class TimerFrame extends JFrame implements Runnable {
      */
     public TimerFrame() {
         setTitle("Pomodoro Timer");
-        setSize(350, 450);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new GridLayout(10, 10, 10, 10));
+        setLayout(new FlowLayout());                           
         getContentPane().setBackground(lightLavender);
 
-        workLabel = new JLabel("Work minutes:", SwingConstants.CENTER);
-        workField = new JTextField(5);
+        workLabel = new JLabel("Work minutes:", SwingConstants.LEFT);
+        workField = new JTextField(3);
         workField.setBackground(lightLavender);
         workField.setForeground(coffee);
 
-        breakLabel = new JLabel("Break minutes:", SwingConstants.CENTER);
-        breakField = new JTextField(5);
+        breakLabel = new JLabel("Break minutes:", SwingConstants.LEFT);
+        breakField = new JTextField(3);
         breakField.setBackground(lightLavender);
         breakField.setForeground(coffee);
 
-        sessionLabel = new JLabel("Waiting to start", SwingConstants.CENTER);
-        timerLabel = new JLabel("00:00", SwingConstants.CENTER);
+        sessionLabel = new JLabel("Waiting to start", SwingConstants.LEFT);
+        timerLabel = new JLabel("00:00", SwingConstants.LEFT);
 
         startButton = new JButton("Start");
         startButton.setBackground(darkGreen);
@@ -95,9 +95,6 @@ public class TimerFrame extends JFrame implements Runnable {
         resetButton = new JButton("Reset");
         resetButton.setBackground(darkGreen);
         
-
-        
-
         add(workLabel);
         add(workField);
         add(breakLabel);
@@ -138,6 +135,7 @@ public class TimerFrame extends JFrame implements Runnable {
                 resetTimer();
             }
         });
+        pack();
     }
 
     // start button
@@ -175,7 +173,9 @@ public class TimerFrame extends JFrame implements Runnable {
             timerLabel.setText(formatTime(counter));
 
             if (counter == 0) {
+                for(int i = 0; i < 3; i++){
                 Toolkit.getDefaultToolkit().beep();
+                }
 
                 if (isWorkSession) {
                     isWorkSession = false;
