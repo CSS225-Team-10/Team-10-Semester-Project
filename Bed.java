@@ -94,9 +94,11 @@ public class Bed extends RoomObject implements Runnable {
         frame.setPreferredSize(new Dimension(300, 325));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
+        frame.getContentPane().setBackground(lightLavender);
 
         label = new JLabel("I hope you like this helpful tip!");
         label.setHorizontalAlignment(JLabel.CENTER);
+        label.setForeground(coffee);
         frame.add(label, BorderLayout.NORTH);
 
         newTipButton = new JButton("Click for a new Tip");
@@ -118,11 +120,17 @@ public class Bed extends RoomObject implements Runnable {
         tipArea.setWrapStyleWord(true);
         tipArea.setEditable(false);
         tipArea.setBackground(lightLavender);
+        tipArea.setForeground(coffee);
+        tipArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
 
         JScrollPane scrollPane = new JScrollPane(tipArea);
-
         Border padding = BorderFactory.createLineBorder(coffee, 1);
         scrollPane.setBorder(padding);
+
+        Border outline = BorderFactory.createLineBorder(coffee, 1);
+        Border margin = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        scrollPane.setBorder(BorderFactory.createCompoundBorder(margin, outline));
 
         frame.add(scrollPane, BorderLayout.CENTER);
 
