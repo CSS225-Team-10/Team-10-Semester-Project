@@ -2,6 +2,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /**
  * A simple Pomodoro timer. User enters work minutes and break minutes. Timer
@@ -42,6 +43,26 @@ public class TimerFrame extends JFrame implements Runnable {
 
     // check if in work session or break
     private boolean isWorkSession;
+    /**
+     * Dark green color for panel
+     */
+    private static Color darkGreen = new Color(52, 88, 48);
+
+    /**
+     * Light green color for panel
+     */
+    private static Color lightGreen = new Color(182, 204, 161);
+
+    /**
+     * Light lavender color for panel
+     */
+    private static Color lightLavender = new Color(233, 214, 236);
+
+    /**
+     * Coffee color for panel
+     */
+    private static Color coffee = new Color(37, 22, 5);
+
 
     /**
      * Constructor that creates timer frame
@@ -51,19 +72,31 @@ public class TimerFrame extends JFrame implements Runnable {
         setSize(350, 450);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(10, 10, 10, 10));
+        getContentPane().setBackground(lightLavender);
 
         workLabel = new JLabel("Work minutes:", SwingConstants.CENTER);
         workField = new JTextField(5);
+        workField.setBackground(lightLavender);
+        workField.setForeground(coffee);
 
         breakLabel = new JLabel("Break minutes:", SwingConstants.CENTER);
         breakField = new JTextField(5);
+        breakField.setBackground(lightLavender);
+        breakField.setForeground(coffee);
 
         sessionLabel = new JLabel("Waiting to start", SwingConstants.CENTER);
         timerLabel = new JLabel("00:00", SwingConstants.CENTER);
 
         startButton = new JButton("Start");
+        startButton.setBackground(darkGreen);
         stopButton = new JButton("Stop");
+        stopButton.setBackground(darkGreen);
+        
         resetButton = new JButton("Reset");
+        resetButton.setBackground(darkGreen);
+        
+
+        
 
         add(workLabel);
         add(workField);
@@ -72,7 +105,12 @@ public class TimerFrame extends JFrame implements Runnable {
         add(sessionLabel);
         add(timerLabel);
 
+        Border border = BorderFactory.createLineBorder(coffee, 1);
+
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(lightGreen);
+        buttonPanel.setBorder(BorderFactory.createLineBorder(coffee, 1));
+        buttonPanel.setBorder(border);
         buttonPanel.add(startButton);
         buttonPanel.add(stopButton);
         buttonPanel.add(resetButton);
