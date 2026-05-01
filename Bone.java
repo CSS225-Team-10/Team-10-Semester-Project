@@ -11,16 +11,19 @@ import javax.swing.ImageIcon;
  * @version Spring, 2026
  */
 
-public class Bone extends RoomObject implements Runnable {
+public class Bone implements Runnable {
     /**
      * Instance variables
      */
     private boolean isClicked;
 
+    private int x;
+    private int y;
     private int width = 40;
     private int height = 40;
 
     private Image boneImage;
+
 
     /**
      * Constructor for the Bone class.
@@ -29,7 +32,8 @@ public class Bone extends RoomObject implements Runnable {
      * @param y y point
      */
     public Bone(int x, int y) {
-        super(x, y);
+        this.x = x;
+        this.y = y;
 
         isClicked = false;
         ImageIcon icon = new ImageIcon("Images/bone.png");
@@ -101,6 +105,34 @@ public class Bone extends RoomObject implements Runnable {
         }
     }
 
+
+    /**
+     * Updates the user's position and animation frame based on movement and click
+     * state.
+     * 
+     * @param cameraX the x coordinate of the camera
+     */
+    public void update(int cameraX) {
+        if (!isClicked) {
+            return;
+        }
+
+        if (x < cameraX + width / 2) {
+            x = cameraX + width / 2;
+        }
+        if (x + width > cameraX + PawfficeMain.FRAME_WIDTH) {
+            x = cameraX + PawfficeMain.FRAME_WIDTH - width;
+        }
+
+        if (y < height / 2) {
+            y = height / 2;
+        }
+        if (y + height > PawfficeMain.FRAME_HEIGHT) {
+            y = PawfficeMain.FRAME_HEIGHT - height;
+        }
+
+    }
+
     /**
      * Runs the bone's behavior in a separate thread.
      */
@@ -108,11 +140,4 @@ public class Bone extends RoomObject implements Runnable {
     public void run() {
     }
 
-    /**
-     * This will launch the frames we want when we click on the different room
-     * objects
-     */
-    public void launch() {
-        javax.swing.SwingUtilities.invokeLater(new Bone(0, 0));
-    }
 }
