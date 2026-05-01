@@ -1,8 +1,13 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.FloatControl;
 import javax.swing.*;
 import javax.swing.border.Border;
+import java.io.File;
+import javax.sound.sampled.Clip;
 
 /**
  * A simple Pomodoro timer. User enters work minutes and break minutes. Timer
@@ -177,8 +182,21 @@ public class TimerFrame extends JFrame implements Runnable {
             timerLabel.setText(formatTime(counter));
 
             if (counter == 0) {
-                for(int i = 0; i < 3; i++){
-                Toolkit.getDefaultToolkit().beep();
+
+                //The following code is for the sound that is made when work or break time is finished. 
+                try {
+                    //the wav file downloaded from https://pixabay.com/sound-effects/search/timer%20done/
+                    File aud = new File("Sounds/timerSound.wav");
+                    AudioInputStream audioStream = AudioSystem.getAudioInputStream(aud);
+
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(audioStream);
+                    clip.loop(2);
+                    clip.start();
+
+                    
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
 
                 if (isWorkSession) {
