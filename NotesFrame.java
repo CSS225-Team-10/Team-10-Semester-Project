@@ -48,7 +48,7 @@ public class NotesFrame implements Runnable {
     public void run() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Desk Notes");
-        frame.setPreferredSize(new Dimension(300, 300));
+        frame.setPreferredSize(new Dimension(450, 350));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.getContentPane().setBackground(lightLavender);
