@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.sound.midi.*;
 
 /**
  * A simple Pomodoro timer. User enters work minutes and break minutes. Timer
@@ -86,6 +85,11 @@ public class TimerFrame extends JFrame implements Runnable {
 
         sessionLabel = new JLabel("Waiting to start", SwingConstants.LEFT);
         timerLabel = new JLabel("00:00", SwingConstants.LEFT);
+
+        Font bigBold = new Font("SansSerif", Font.BOLD, 15);
+        Font bigItalic = new Font("Monospaced", Font.ITALIC, 24);
+        sessionLabel.setFont(bigBold);
+        timerLabel.setFont(bigItalic);
 
         startButton = new JButton("Start");
         startButton.setBackground(darkGreen);
